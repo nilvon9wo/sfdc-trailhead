@@ -82,6 +82,30 @@
     <relatedLists>
         <relatedList>RelatedFeedbackRelatedList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>Subject</fields>
+        <fields>Recipient</fields>
+        <fields>FeedbackRequestState</fields>
+        <relatedList>FeedbackRecentWorkRelatedList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>Owner</fields>
+        <fields>Progress</fields>
+        <fields>Status</fields>
+        <relatedList>GoalRecentWorkRelatedList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>Progress</fields>
+        <fields>Status</fields>
+        <fields>CurrentValue</fields>
+        <fields>InitialValue</fields>
+        <fields>TargetValue</fields>
+        <fields>Goal</fields>
+        <relatedList>MetricRecentWorkRelatedList</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

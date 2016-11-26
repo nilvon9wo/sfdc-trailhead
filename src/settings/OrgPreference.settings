@@ -50,7 +50,7 @@
     </preferences>
     <preferences>
         <settingName>NotesReservedPref01</settingName>
-        <settingValue>false</settingValue>
+        <settingValue>true</settingValue>
     </preferences>
     <preferences>
         <settingName>EnhancedEmailEnabled</settingName>
@@ -62,6 +62,6 @@
     </preferences>
     <preferences>
         <settingName>S1DesktopEnabled</settingName>
-        <settingValue>false</settingValue>
+        <settingValue>true</settingValue>
     </preferences>
 </OrgPreferenceSettings>

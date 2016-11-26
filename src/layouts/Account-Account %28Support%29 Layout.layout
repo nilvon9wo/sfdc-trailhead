@@ -210,6 +210,9 @@
             <quickActionName>NewEvent</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
+            <quickActionName>FeedItem.ContentNote</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
             <quickActionName>FeedItem.LinkPost</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
@@ -220,6 +223,11 @@
         </quickActionListItems>
     </quickActionList>
     <relatedContent>
+        <relatedContentItems>
+            <layoutItem>
+                <component>wits:newsPanel</component>
+            </layoutItem>
+        </relatedContentItems>
         <relatedContentItems>
             <layoutItem>
                 <component>runtime_sales_social:socialPanel</component>
