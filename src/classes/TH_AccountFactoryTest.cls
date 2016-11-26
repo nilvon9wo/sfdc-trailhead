@@ -1,5 +1,5 @@
 @isTest
-private class TH_AccountFactoryTest { 
+private class TH_AccountFactoryTest {  
 	private static final User TestRunner = TEST_RunAsUserFactory.create(); 
 	private static final String expectedName = 'Acme';
 	private static final String expectedPhone = '(415) 555-1212';
@@ -70,9 +70,11 @@ private class TH_AccountFactoryTest {
 	}
 
 	private class MockAccountDao extends DAO_AccountDao { 
-		public override Account doInsert(Account account){
+		public override UTIL_ResultListWrapper doInsert(Account account){
 			TEST_MockDMLHelper.mockInsert  ( account );
-			return account;
+			return new UTIL_ResultListWrapper(
+				new List<Database.SaveResult>()
+			);
 		}  
 	}
 }

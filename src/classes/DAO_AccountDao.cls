@@ -1,6 +1,5 @@
 public virtual class DAO_AccountDao { 
-	public virtual Account doInsert(Account account){
-		insert account;
-		return account;
+	public virtual UTIL_ResultListWrapper doInsert(Account account){
+		return DAO_SObjectDMLHelper.doInsert(account);
 	}  
 }

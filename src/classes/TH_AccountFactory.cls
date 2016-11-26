@@ -17,7 +17,7 @@ public class TH_AccountFactory {
 		);
 		
 		if (insertNow){
-			account = this.accountDao.doInsert(account);
+			this.accountDao.doInsert(account);
 		}
 		
 		return account;
