@@ -1,5 +1,5 @@
 @isTest
-private class TH_AccountFactoryTest {
+private class TH_AccountFactoryTest { 
 	private static final User TestRunner = TEST_RunAsUserFactory.create(); 
 	private static final String expectedName = 'Acme';
 	private static final String expectedPhone = '(415) 555-1212';
