@@ -20,7 +20,10 @@ private class TH_AccountFactoryTest {
         }
 
 		// Assert
+		System.assertEquals(result.id, null);
 		System.assertEquals(result.name, expectedName);
+		System.assertEquals(result.phone, null);
+		System.assertEquals(result.numberOfEmployees, null);
 	}
 
 	private static testMethod void createShouldIncludeDetailsWhenCreatingSpecifiedAccount(){
@@ -38,9 +41,38 @@ private class TH_AccountFactoryTest {
         }
 
 		// Assert
+		System.assertEquals(result.id, null);
 		System.assertEquals(result.name, expectedName);
 		System.assertEquals(result.phone, expectedPhone);
 		System.assertEquals(result.numberOfEmployees, expectedEmployeeCount);
 	}
 
+	private static testMethod void createShouldInsertWithDetailsWhenCreatingSpecifiedAccount(){
+		// Arrange
+		DAO_AccountDao mockAccountDao = new MockAccountDao(); 
+		TH_AccountFactory accountGenerator = new TH_AccountFactory(mockAccountDao);
+		
+		// Act
+		Account result;
+        System.runAs(TestRunner){
+            Test.startTest();
+            {
+                result = accountGenerator.create(expectedName, expectedPhone, expectedEmployeeCount, true);
+            }
+            Test.stopTest();
+        }
+
+		// Assert
+		System.assertNotEquals(result.id, null);
+		System.assertEquals(result.name, expectedName);
+		System.assertEquals(result.phone, expectedPhone);
+		System.assertEquals(result.numberOfEmployees, expectedEmployeeCount);
+	}
+
+	private class MockAccountDao extends DAO_AccountDao { 
+		public override Account doInsert(Account account){
+			TEST_MockDMLHelper.mockInsert  ( account );
+			return account;
+		}  
+	}
 }

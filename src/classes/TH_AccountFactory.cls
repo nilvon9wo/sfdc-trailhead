@@ -1,12 +1,12 @@
 public class TH_AccountFactory {
-	TH_AccountDao accountDao; 
+	DAO_AccountDao accountDao; 
 	
-	public TH_AccountFactory(TH_AccountDao accountDao){
+	public TH_AccountFactory(DAO_AccountDao accountDao){
 		this.accountDao = accountDao;
 	}
 	
 	public TH_AccountFactory(){
-		this(new TH_AccountDao());
+		this(new DAO_AccountDao());
 	}
 	
 	public Account create (String name, String phone, Integer numberOfEmployees, Boolean insertNow) {
@@ -17,7 +17,7 @@ public class TH_AccountFactory {
 		);
 		
 		if (insertNow){
-			this.accountDao.insertAccount(account);
+			account = this.accountDao.doInsert(account);
 		}
 		
 		return account;
