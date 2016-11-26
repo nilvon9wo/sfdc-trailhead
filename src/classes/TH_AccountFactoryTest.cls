@@ -49,7 +49,8 @@ private class TH_AccountFactoryTest {
 
 	private static testMethod void createShouldInsertWithDetailsWhenCreatingSpecifiedAccount(){
 		// Arrange
-		DAO_AccountDao mockAccountDao = new MOCK_AccountDao(); 
+		DAO_AccountDao mockAccountDao = new MOCK_AccountDao();
+		MOCK_AccountDao.insertedAccount = false; 
 		TH_AccountFactory accountGenerator = new TH_AccountFactory(mockAccountDao);
 		
 		// Act
@@ -63,6 +64,7 @@ private class TH_AccountFactoryTest {
         }
 
 		// Assert
+		System.assert(MOCK_AccountDao.insertedAccount);
 		System.assertNotEquals(result.id, null);
 		System.assertEquals(result.name, expectedName);
 		System.assertEquals(result.phone, expectedPhone);
