@@ -13,6 +13,11 @@ public class TH_EmailManager {
 	public TH_EmailManager () {
 		this(new MSG_Postman(), new MSG_PostalInspector());  
 	}
+
+	public static void send(TH_Email email) {
+		TH_EmailManager manager = new TH_EmailManager();
+		manager.sendMail(email);	
+	}
 	
 	public Boolean sendMail (TH_Email email) { 
 		Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
