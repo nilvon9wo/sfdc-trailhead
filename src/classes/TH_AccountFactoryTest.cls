@@ -49,7 +49,7 @@ private class TH_AccountFactoryTest {
 
 	private static testMethod void createShouldInsertWithDetailsWhenCreatingSpecifiedAccount(){
 		// Arrange
-		DAO_AccountDao mockAccountDao = new MockAccountDao(); 
+		DAO_AccountDao mockAccountDao = new MOCK_AccountDao(); 
 		TH_AccountFactory accountGenerator = new TH_AccountFactory(mockAccountDao);
 		
 		// Act
@@ -57,7 +57,7 @@ private class TH_AccountFactoryTest {
         System.runAs(TestRunner){
             Test.startTest();
             {
-                result = accountGenerator.create(expectedName, expectedPhone, expectedEmployeeCount, true);
+                result = accountGenerator.create(expectedName, expectedPhone, expectedEmployeeCount, DAO_Timing.NOW);
             }
             Test.stopTest();
         }
@@ -67,14 +67,5 @@ private class TH_AccountFactoryTest {
 		System.assertEquals(result.name, expectedName);
 		System.assertEquals(result.phone, expectedPhone);
 		System.assertEquals(result.numberOfEmployees, expectedEmployeeCount);
-	}
-
-	private class MockAccountDao extends DAO_AccountDao { 
-		public override UTIL_ResultListWrapper doInsert(Account account){
-			TEST_MockDMLHelper.mockInsert  ( account );
-			return new UTIL_ResultListWrapper(
-				new List<Database.SaveResult>()
-			);
-		}  
 	}
 }

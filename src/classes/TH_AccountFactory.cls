@@ -24,10 +24,10 @@ public class TH_AccountFactory {
 	}    
 
 	public Account create (String name, String phone, Integer numberOfEmployees) {
-		return this.create(name, phone, numberOfEmployees, false);
+		return this.create(name, phone, numberOfEmployees, DAO_Timing.LATER);
 	}    
 
 	public Account create (String name) {
-		return this.create(name, null, null, false);
+		return this.create(name, null, null, DAO_Timing.LATER);
 	}    
 }
