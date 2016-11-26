@@ -3,10 +3,11 @@ private class TH_ContactFactoryTest {
 	private static final User TestRunner = TEST_RunAsUserFactory.create(); 
 	
 	private static List<Contact> testContactList = new List<Contact>{
-		new Contact(firstName='Kathy', lastName='Smith', department='Technology'),
-        new Contact(firstName='Caroline',lastName='Roth',department='Finance'),
-        new Contact(firstName='Kim', lastName='Shain', department='Education') 
-	};
+			MOCK_ContactFactory.createTestContact(),
+			MOCK_ContactFactory.createTestContact(),
+			MOCK_ContactFactory.createTestContact()
+		};
+	
 	
 	private static testMethod void createContactListShouldReturnListedContactsWithoutInsertingThemWhenDaoIsLater(){
 		testCreate(DAO_Timing.LATER);
