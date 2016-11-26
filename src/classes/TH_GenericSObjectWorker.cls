@@ -1,5 +1,5 @@
 public class TH_GenericSObjectWorker {
-	SObject sObj;
+	public SObject sObj;
 
 	public Account setToAccount(String name){
 		return (Account) setAndReturn(new Account(name = name));

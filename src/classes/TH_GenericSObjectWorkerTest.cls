@@ -12,13 +12,16 @@ private class TH_GenericSObjectWorkerTest {
         System.runAs(TestRunner){
             Test.startTest();
             {
-                result = (Account) workerUnderTest.setToAccount(accountName);
+                result = workerUnderTest.setToAccount(accountName);
             }
             Test.stopTest();
         }
 
 		// Assert
 		System.assertEquals(result.name, accountName);
+		
+		Account fromGeneric = (Account) workerUnderTest.sObj;
+		System.assertEquals(fromGeneric, result);
 	}
 	
 	private static testMethod void setToBookShouldSetSObjectToNamedBook(){
@@ -31,13 +34,16 @@ private class TH_GenericSObjectWorkerTest {
         System.runAs(TestRunner){
             Test.startTest();
             {
-                result = (TH_Book__c) workerUnderTest.setToBook(accountName);
+                result = workerUnderTest.setToBook(accountName);
             }
             Test.stopTest();
         }
 
 		// Assert
 		System.assertEquals(result.name, accountName);
+
+		TH_Book__c fromGeneric = (TH_Book__c) workerUnderTest.sObj;
+		System.assertEquals(fromGeneric, result);
 	}
 	
 }
