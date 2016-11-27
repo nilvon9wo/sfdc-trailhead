@@ -1,0 +1,1 @@
+public class DAO_Exception extends Exception {}

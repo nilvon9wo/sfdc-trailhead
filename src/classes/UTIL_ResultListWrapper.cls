@@ -1,8 +1,31 @@
 public class UTIL_ResultListWrapper 
 {
 	private enum ResultTypeEnum { SAVE_RESULT, UPSERT_RESULT, DELETE_RESULT, UNDELETE_RESULT, SEND_EMAIL_RESULT }
+	ResultTypeEnum			        resultType	        = null;
+
+	List<Database.SaveResult>       saveResultList      = null;
+	List<Database.UpsertResult>     upsertResultList    = null;
+	List<Database.DeleteResult>     deleteResultList    = null;
+	List<Database.UndeleteResult>   undeleteResultList  = null; 
+	List<Messaging.SendEmailResult> sendEmailResultList = null;
+
+	public UTIL_ResultListWrapper(List<Database.SaveResult>       resultList) { this.resultType = ResultTypeEnum.SAVE_RESULT;	     this.saveResultList      = resultList; }
+	public UTIL_ResultListWrapper(List<Database.UpsertResult>     resultList) { this.resultType = ResultTypeEnum.UPSERT_RESULT;	 	 this.upsertResultList    = resultList; }
+	public UTIL_ResultListWrapper(List<Database.DeleteResult>     resultList) { this.resultType = ResultTypeEnum.DELETE_RESULT;	 	 this.deleteResultList    = resultList; }
+	public UTIL_ResultListWrapper(List<Database.UndeleteResult>   resultList) { this.resultType = ResultTypeEnum.UNDELETE_RESULT; 	 this.undeleteResultList  = resultList; }
+	public UTIL_ResultListWrapper(List<Messaging.SendEmailResult> resultList) { this.resultType = ResultTypeEnum.SEND_EMAIL_RESULT;  this.sendEmailResultList = resultList; }
 	
-	public class Result
+	public Result get(Integer index)
+	{
+		if (this.resultType == ResultTypeEnum.SAVE_RESULT)       { return new Result (saveResultList[index].isSuccess(),       saveResultList[index].getErrors());	    }
+		if (this.resultType == ResultTypeEnum.UPSERT_RESULT)     { return new Result (upsertResultList[index].isSuccess(),     upsertResultList[index].getErrors());    }
+		if (this.resultType == ResultTypeEnum.DELETE_RESULT)     { return new Result (deleteResultList[index].isSuccess(),     deleteResultList[index].getErrors());	}
+		if (this.resultType == ResultTypeEnum.UNDELETE_RESULT)   { return new Result (undeleteResultList[index].isSuccess(),   undeleteResultList[index].getErrors());  }
+		if (this.resultType == ResultTypeEnum.SEND_EMAIL_RESULT) { return new Result (sendEmailResultList[index].isSuccess(),  sendEmailResultList[index].getErrors()); }
+		return null;
+	}
+
+	public class Result 
 	{
 		private Boolean isSuccess = null;
 		public  Boolean getIsSuccess() { return isSuccess; }
@@ -22,30 +45,6 @@ public class UTIL_ResultListWrapper
 			for (Database.Error error : this.errorList) { errorString += String.valueOf(error) + '; '; }
 			return errorString;
 		}
-	}
-	
-	ResultTypeEnum			        resultType	     = null;
-	
-	List<Database.SaveResult>       saveResultList      = null;
-	List<Database.UpsertResult>     upsertResultList    = null;
-	List<Database.DeleteResult>     deleteResultList    = null;
-	List<Database.UndeleteResult>   undeleteResultList  = null; 
-	List<Messaging.SendEmailResult> sendEmailResultList = null;
-	
-	public UTIL_ResultListWrapper(List<Database.SaveResult>       resultList) { this.resultType = ResultTypeEnum.SAVE_RESULT;	     this.saveResultList      = resultList; }
-	public UTIL_ResultListWrapper(List<Database.UpsertResult>     resultList) { this.resultType = ResultTypeEnum.UPSERT_RESULT;	 	 this.upsertResultList    = resultList; }
-	public UTIL_ResultListWrapper(List<Database.DeleteResult>     resultList) { this.resultType = ResultTypeEnum.DELETE_RESULT;	 	 this.deleteResultList    = resultList; }
-	public UTIL_ResultListWrapper(List<Database.UndeleteResult>   resultList) { this.resultType = ResultTypeEnum.UNDELETE_RESULT; 	 this.undeleteResultList  = resultList; }
-	public UTIL_ResultListWrapper(List<Messaging.SendEmailResult> resultList) { this.resultType = ResultTypeEnum.SEND_EMAIL_RESULT;  this.sendEmailResultList = resultList; }
-	
-	public Result get(Integer index)
-	{
-		if (this.resultType == ResultTypeEnum.SAVE_RESULT)       { return new Result (saveResultList[index].isSuccess(),       saveResultList[index].getErrors());	    }
-		if (this.resultType == ResultTypeEnum.UPSERT_RESULT)     { return new Result (upsertResultList[index].isSuccess(),     upsertResultList[index].getErrors());    }
-		if (this.resultType == ResultTypeEnum.DELETE_RESULT)     { return new Result (deleteResultList[index].isSuccess(),     deleteResultList[index].getErrors());	}
-		if (this.resultType == ResultTypeEnum.UNDELETE_RESULT)   { return new Result (undeleteResultList[index].isSuccess(),   undeleteResultList[index].getErrors());  }
-		if (this.resultType == ResultTypeEnum.SEND_EMAIL_RESULT) { return new Result (sendEmailResultList[index].isSuccess(),  sendEmailResultList[index].getErrors()); }
-		return null;
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------------------------------

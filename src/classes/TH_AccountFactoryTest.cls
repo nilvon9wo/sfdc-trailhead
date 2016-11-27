@@ -7,14 +7,14 @@ private class TH_AccountFactoryTest {
 	
 	private static testMethod void createShouldCreateSpecifiedAccount(){
 		// Arrange
-		TH_AccountFactory accountGenerator = new TH_AccountFactory();
+		TH_AccountFactory accountFactory = new TH_AccountFactory();
 		
 		// Act
 		Account result;
         System.runAs(TestRunner){
             Test.startTest();
             {
-                result = accountGenerator.create(expectedName);
+                result = accountFactory.create(expectedName);
             }
             Test.stopTest();
         }
@@ -28,14 +28,14 @@ private class TH_AccountFactoryTest {
 
 	private static testMethod void createShouldIncludeDetailsWhenCreatingSpecifiedAccount(){
 		// Arrange
-		TH_AccountFactory accountGenerator = new TH_AccountFactory();
+		TH_AccountFactory accountFactory = new TH_AccountFactory();
 		
 		// Act
 		Account result;
         System.runAs(TestRunner){
             Test.startTest();
             {
-                result = accountGenerator.create(expectedName, expectedPhone, expectedEmployeeCount);
+                result = accountFactory.create(expectedName, expectedPhone, expectedEmployeeCount);
             }
             Test.stopTest();
         }
@@ -51,14 +51,14 @@ private class TH_AccountFactoryTest {
 		// Arrange
 		DAO_AccountDao mockAccountDao = new MOCK_AccountDao();
 		MOCK_AccountDao.insertedAccount = false; 
-		TH_AccountFactory accountGenerator = new TH_AccountFactory(mockAccountDao);
+		TH_AccountFactory accountFactory = new TH_AccountFactory(mockAccountDao);
 		
 		// Act
 		Account result;
         System.runAs(TestRunner){
             Test.startTest();
             {
-                result = accountGenerator.create(expectedName, expectedPhone, expectedEmployeeCount, DAO_Timing.NOW);
+                result = accountFactory.create(expectedName, expectedPhone, expectedEmployeeCount, DAO_Timing.NOW);
             }
             Test.stopTest();
         }
