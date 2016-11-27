@@ -71,10 +71,4 @@ public class TH_ContactManager {
 
 		return updatedContactList;
 	}  
-	
-	public UTIL_ResultListWrapper deleteByLastName(String lastName) {
-		List<Contact> contactList = this.contactDao.getByLastName(lastName);
-		return this.contactDao.doDelete(contactList); 
-	}
-	  
 }

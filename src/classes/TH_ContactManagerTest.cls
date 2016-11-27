@@ -86,32 +86,4 @@ private class TH_ContactManagerTest {
 		System.assertEquals(result.department, targetDepartment);
 		System.assertEquals(result.title, targetTitle);
 	}
-
-	// Test delete by last name
-	
-	private static testMethod void deleteByLastNameShould (){
-		// Arrange
-		
-		DAO_ContactDao mockContactDao = new MOCK_ContactDao();
-		MOCK_ContactDao.gotContactList = false;
-		MOCK_ContactDao.deletedContactList = false;
-		MOCK_ContactDao.resultContactList = new List<Contact>{
-			MOCK_ContactFactory.createTestContact(TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER)
-		}; 
-		TH_ContactManager managerUnderTest = new TH_ContactManager(mockContactDao);
-		
-		// Act
-		UTIL_ResultListWrapper resultList;
-        System.runAs(TestRunner){
-            Test.startTest(); 
-            {
-                managerUnderTest.deleteByLastName(targetLastName); 
-            }
-            Test.stopTest();
-        } 
-
-		// Assert
-		System.assert(MOCK_ContactDao.gotContactList);
-		System.assert(MOCK_ContactDao.deletedContactList);
-	} 
 }

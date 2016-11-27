@@ -9,6 +9,16 @@ public class TH_AccountFactory {
 		this(new DAO_AccountDao());
 	}
 	
+    public static Account insertNewAccount(String name) {
+    	if (name != null && name != '') {
+	    	TH_AccountFactory factory = new TH_AccountFactory();
+    		return factory.create(name, null, null, DAO_Timing.NOW);
+    	}
+    	else {
+    		return null;
+    	}
+    }
+	
 	public Account create (String name, String phone, Integer numberOfEmployees, Boolean insertNow) {
 		Account account = new Account(
 			name = name,
