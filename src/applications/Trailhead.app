@@ -3,5 +3,6 @@
     <defaultLandingTab>standard-home</defaultLandingTab>
     <label>Trailhead</label>
     <tab>standard-Account</tab>
+    <tab>standard-Contact</tab>
     <tab>TH_Book__c</tab>
 </CustomApplication>

@@ -285,6 +285,12 @@
     </listViews>
     <listViews>
         <fullName>NewThisWeek</fullName>
+        <columns>CONTACT.FIRST_NAME</columns>
+        <columns>CONTACT.LAST_NAME</columns>
+        <columns>CONTACT.DEPARTMENT</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.CREATED_DATE</columns>
+        <columns>CONTACT.LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CONTACT.CREATED_DATE</field>
