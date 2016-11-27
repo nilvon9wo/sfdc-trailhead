@@ -1,11 +1,11 @@
-@isTest
-private class TH_ContactFactoryTest {
+@isTest 
+private class TH_ContactFactoryTest { 
 	private static final User TestRunner = TEST_RunAsUserFactory.create(); 
-	
+	 
 	private static List<Contact> testContactList = new List<Contact>{
-			MOCK_ContactFactory.createTestContact(),
-			MOCK_ContactFactory.createTestContact(),
-			MOCK_ContactFactory.createTestContact()
+			MOCK_ContactFactory.create(),
+			MOCK_ContactFactory.create(),
+			MOCK_ContactFactory.create()
 		};
 	
 	

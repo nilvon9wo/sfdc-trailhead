@@ -17,9 +17,9 @@ private class TH_ContactManagerTest {
 	private static testMethod void saveContactListShouldDivideSuccessfulFromUnsucessfulSaves(){
 		// Arrange
 		List<Contact> testContactList = new List<Contact>{
-			MOCK_ContactFactory.createTestContact(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER),
-			MOCK_ContactFactory.createTestContact(TARGET_NAME, TARGET_DEPARTMENT, DAO_Timing.LATER),
-			MOCK_ContactFactory.createTestContact(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER),
+			MOCK_ContactFactory.create(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER),
+			MOCK_ContactFactory.create(TARGET_NAME, TARGET_DEPARTMENT, DAO_Timing.LATER),
+			MOCK_ContactFactory.create(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER),
 			new Contact()
 		};
 		
@@ -45,9 +45,9 @@ private class TH_ContactManagerTest {
 	}
 	
 	private static testMethod void assignShouldSetOnlyQualifiedContactsToNewTitle(){
-		testAssign(DAO_Timing.LATER);		
+		testAssign(DAO_Timing.LATER);		 
 	}
-
+ 
 	private static testMethod void assignShouldSetQualifiedContactsToNewTitleAndSave(){
 		Boolean previouslyInserted = true; 
 		testAssign(DAO_Timing.NOW);		
@@ -56,9 +56,9 @@ private class TH_ContactManagerTest {
 	private static void testAssign(Boolean updateNow){
 		// Arrange
 		List<Contact> testContactList = new List<Contact>{
-			MOCK_ContactFactory.createTestContact(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER),
-			MOCK_ContactFactory.createTestContact(TARGET_NAME, TARGET_DEPARTMENT, DAO_Timing.LATER),
-			MOCK_ContactFactory.createTestContact(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER)
+			MOCK_ContactFactory.create(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER),
+			MOCK_ContactFactory.create(TARGET_NAME, TARGET_DEPARTMENT, DAO_Timing.LATER),
+			MOCK_ContactFactory.create(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER)
 		};
 
 		DAO_ContactDao mockContactDao = new MOCK_ContactDao();
