@@ -71,7 +71,15 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>DAO_AccountAndContactCombinedDao</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DAO_AccountDao</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DAO_ContactAndLeadCombinedDao</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -135,6 +143,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_AccountArrayConsumerInterface</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_AccountFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -192,6 +204,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_GenericSObjectWorkerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_PersonName</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
