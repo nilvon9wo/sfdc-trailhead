@@ -287,7 +287,7 @@ public virtual class fflib_SObjectUnitOfWork
 	/**
 	 * Takes all the work that has been registered with the UnitOfWork and commits it to the database
 	 **/
-	public void commitWork()
+	public void commitWork(TEST_DummyInsertModeEnum insertMode)
 	{
 		// notify we're starting the commit work
 		onCommitWorkStarting();
@@ -303,7 +303,14 @@ public virtual class fflib_SObjectUnitOfWork
 			for(Schema.SObjectType sObjectType : m_sObjectTypes)
 			{
 				m_relationships.get(sObjectType.getDescribe().getName()).resolve();
-				m_dml.dmlInsert(m_newListByType.get(sObjectType.getDescribe().getName()));
+				List<SObject> newList = m_newListByType.get(sObjectType.getDescribe().getName());
+				
+				if (!Test.isRunningTest() || insertMode == TEST_DummyInsertModeEnum.REAL){
+					m_dml.dmlInsert(newList);
+				} 
+				else if (Test.isRunningTest() && insertMode == TEST_DummyInsertModeEnum.MOCK) {
+					TEST_MockDMLHelper.mockInsert(newList);
+				}
 			}					
 			// Update by type
 			for(Schema.SObjectType sObjectType : m_sObjectTypes)
@@ -341,6 +348,10 @@ public virtual class fflib_SObjectUnitOfWork
 			// notify we're done with commit work
 			onCommitWorkFinished(wasSuccessful);
 		}
+	}
+	
+	public void commitWork() {
+		this.commitWork(TEST_DummyInsertModeEnum.REAL);
 	}
 	
 	private class Relationships
