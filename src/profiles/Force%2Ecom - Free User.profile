@@ -71,6 +71,10 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>CaseService</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DAO_AccountAndContactCombinedDao</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -88,6 +92,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>DAO_Exception</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DAO_OpportunitiesDao</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -207,6 +215,50 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_OpportunitiesControllerExtension</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunitiesDiscountBatchJob</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunitiesDiscountRestResource</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunitiesDiscountStrategy</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunitiesLineItemDiscountStrategy</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunitiesRemoteActionController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunitiesService</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunitiesServiceException</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunitiesServiceOptions</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunitiesSetControllerExtension</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunityDiscountInfo</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_PersonName</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -216,6 +268,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_StringArrayGeneratorTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>UTIL_IfPopulatedListStrategy</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>UTIL_IfPopulatedListStrategyInterface</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
