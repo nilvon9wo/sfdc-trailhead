@@ -1,33 +1,48 @@
 public class TH_OpportunitiesDiscountStrategy extends UTIL_IfPopulatedListStrategy {  
 	DAO_OpportunitiesDao opportunitiesDao;
-	Boolean updateRecords;
+	Boolean commitWork;
 	Map<Id, Decimal> discountPercentageByOpportunityId;
 	List<Decimal> discountList; 
 
 	public TH_OpportunitiesDiscountStrategy(
 			Map<Id, Decimal> discountPercentageByOpportunityId,
-			Boolean updateRecords, 
 			List<Decimal> discountList,
-			DAO_OpportunitiesDao opportunitiesDao
+			DAO_OpportunitiesDao opportunitiesDao,
+			Boolean commitWork
 		){
 		this.discountPercentageByOpportunityId = discountPercentageByOpportunityId;
-		this.updateRecords = updateRecords;
-		this.opportunitiesDao = opportunitiesDao;
 		this.discountList = discountList;
+		this.commitWork = commitWork;
+		this.opportunitiesDao = opportunitiesDao;
 	}
 
 	public TH_OpportunitiesDiscountStrategy(
 			Map<Id, Decimal> discountPercentageByOpportunityId, 
-			Boolean updateRecords, 
-			List<Decimal> discountList
+			List<Decimal> discountList,
+			Boolean commitWork
 		){
-		this(discountPercentageByOpportunityId, updateRecords, discountList, new DAO_OpportunitiesDao());
+		this(discountPercentageByOpportunityId, discountList, new DAO_OpportunitiesDao(), commitWork);
 	}
 	
 	public void doIfPopulated(List<Object> opportunityIdList){
 		Set<Id> opportunityIdSet = new Set<Id>((List<Id>) opportunityIdList);
 		
-		for (Id opportunityId : (List<Id>) opportunityIdList) {
+		fflib_SObjectUnitOfWork unitOfWork = new fflib_SObjectUnitOfWork(
+			new List<SObjectType> {OpportunityLineItem.SObjectType, Opportunity.SObjectType}
+		);
+		
+		if (validDiscounts((List<Id>) opportunityIdList)) {
+			List<Opportunity> opportunityList = opportunitiesDao.getByIds(opportunityIdSet);
+			getDiscountedRecords(unitOfWork, opportunityList);
+	
+			if (this.commitWork){
+				opportunitiesDao.tryUpdate(unitOfWork); 
+			}
+		}
+	}
+	
+	private Boolean validDiscounts(List<Id> opportunityIdList){
+		for (Id opportunityId : opportunityIdList) {
 			Decimal discountPercentage = discountPercentageByOpportunityId.get(opportunityId);
 			if (discountPercentage < 0 || discountPercentage > 100) {
 				throw new TH_OpportunitiesServiceException(
@@ -35,31 +50,22 @@ public class TH_OpportunitiesDiscountStrategy extends UTIL_IfPopulatedListStrate
 				);
 			}
 		}
-		
-		List<Opportunity> opportunityList = opportunitiesDao.getByIds(opportunityIdSet);
-		List<List<SObject>> updatedRecordLists = getDiscountedRecords(opportunityList);
-
-		if (this.updateRecords){
-			opportunitiesDao.tryUpdate(updatedRecordLists);
-		}
+		return true; 
 	}
 	
-	private List<List<SObject>> getDiscountedRecords(List<Opportunity> opportunityList){
-		List<Opportunity> opportunitiesToUpdate = new List<Opportunity>();
-		List<OpportunityLineItem> opportunityLineItemsToUpdateList = new List<OpportunityLineItem>();
+	private fflib_SObjectUnitOfWork getDiscountedRecords(fflib_SObjectUnitOfWork unitOfWork, List<Opportunity> opportunityList){
 		
 		for(Opportunity opportunity: opportunityList) {
 			Decimal discountPercentage = discountPercentageByOpportunityId.get(opportunity.id);
 			Decimal factor = 1 - (discountPercentage == null ? 0 : discountPercentage / 100);
 			
 			TH_OpportunitiesLineItemDiscountStrategy discountStrategy = 
-				new TH_OpportunitiesLineItemDiscountStrategy(
-					opportunitiesToUpdate, opportunityLineItemsToUpdateList, opportunity, factor, this.discountList
-				);	
+				new TH_OpportunitiesLineItemDiscountStrategy(unitOfWork, opportunity, factor, this.discountList);
+					
 			discountStrategy.execute(opportunity.opportunityLineItems);
 		}
 		
-		return new List<List<SObject>> { opportunityLineItemsToUpdateList, opportunitiesToUpdate }; 
+		return unitOfWork; 
 	}
 	
 	public void doIfEmpty(){

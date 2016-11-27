@@ -8,16 +8,7 @@ public virtual class DAO_OpportunitiesDao {
 		];
 	}
 	
-	public virtual void tryUpdate(List<List<SObject>> updatedRecordLists){
-		SavePoint savePoint = Database.setSavePoint();
-		try {
-			for (List<SObject> updatedRecordList : updatedRecordLists){
-				DAO_SObjectDMLHelper.doUpdate(updatedRecordList, DAO_SObjectDMLHelper.ALL_OR_NONE);
-			}
-		}
-		catch (Exception e){
-			Database.rollback(savePoint);
-			throw e;
-		}
-	}    
+	public virtual void tryUpdate(fflib_SObjectUnitOfWork unitOfWork){
+		unitOfWork.commitWork();	
+	}	    
 }

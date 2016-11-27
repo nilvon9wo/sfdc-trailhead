@@ -1,3 +1,3 @@
 public class TH_OpportunitiesServiceOptions {
-	public Boolean updateRecords = false;    
+	public Boolean commitWork = true;    
 }

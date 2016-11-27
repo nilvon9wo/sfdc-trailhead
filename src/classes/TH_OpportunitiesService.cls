@@ -10,11 +10,11 @@ global class TH_OpportunitiesService {
 		return service.applyDiscounts(opportunityIdList, discountPercentage, config);
 	}
 
-	public List<Decimal> applyDiscounts(Map<Id, Decimal> discountPercentageByOpportunityId, TH_OpportunitiesServiceOptions config) {
+	public List<Decimal> applyDiscounts(Map<Id, Decimal> discountPercentageByOpportunityId, TH_OpportunitiesServiceOptions options) {
 		List<Decimal> discountList = new List<Decimal>();
   
 		TH_OpportunitiesDiscountStrategy discountStrategy =  
-			new TH_OpportunitiesDiscountStrategy(discountPercentageByOpportunityId, config.updateRecords, discountList);
+			new TH_OpportunitiesDiscountStrategy(discountPercentageByOpportunityId, discountList, options.commitWork); 
 
 		discountStrategy.execute(discountPercentageByOpportunityId.values());
 		return discountList;
