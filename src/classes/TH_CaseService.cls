@@ -1,16 +1,16 @@
-public class CaseService {
+public class TH_CaseService {
 	DAO_CaseDao caseDao; 
 	
-	public CaseService(DAO_CaseDao caseDao){
+	public TH_CaseService(DAO_CaseDao caseDao){
 		this.caseDao = caseDao;
 	}
 	
-	public CaseService(){
+	public TH_CaseService(){
 		this(new DAO_CaseDao());
 	}
 
 	public static void closeCases(Set<Id> caseIdSet, String reason) {
-		CaseService service = new CaseService();
+		TH_CaseService service = new TH_CaseService();
 		service.close(caseIdSet, reason);
 	}
 	

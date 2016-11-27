@@ -1,18 +1,18 @@
 @RestResource(urlMapping='/case/*/close') 
-global with sharing class CaseCloseResource {
-	CaseService caseService;
+global with sharing class TH_CaseCloseResource {
+	TH_CaseService caseService;
 	
-	public CaseCloseResource(CaseService caseService){
+	public TH_CaseCloseResource(TH_CaseService caseService){
 		this.caseService = caseService;
 	}     
 
-	public CaseCloseResource(){
-		this (new CaseService());
+	public TH_CaseCloseResource(){
+		this (new TH_CaseService());
 	}
 	
 	@HttpPost
     global static void closeCase(String reason) {
-		CaseCloseResource resource = new CaseCloseResource();
+		TH_CaseCloseResource resource = new TH_CaseCloseResource();
 		resource.close(reason);
 	}
 	
