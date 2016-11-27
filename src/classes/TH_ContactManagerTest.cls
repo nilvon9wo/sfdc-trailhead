@@ -13,6 +13,36 @@ private class TH_ContactManagerTest {
 	private static final Boolean NOT_TARGET_DEPARTMENT = false; 
 
 	private static Integer testContactCount = 0;
+
+	private static testMethod void saveContactListShouldDivideSuccessfulFromUnsucessfulSaves(){
+		// Arrange
+		List<Contact> testContactList = new List<Contact>{
+			MOCK_ContactFactory.createTestContact(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER),
+			MOCK_ContactFactory.createTestContact(TARGET_NAME, TARGET_DEPARTMENT, DAO_Timing.LATER),
+			MOCK_ContactFactory.createTestContact(NOT_TARGET_NAME, NOT_TARGET_DEPARTMENT, DAO_Timing.LATER),
+			new Contact()
+		};
+		
+		DAO_ContactDao mockContactDao = new MOCK_ContactDao();
+		MOCK_ContactDao.insertedContactList = false;
+		// TODO: Inject mock
+		TH_ContactManager managerUnderTest = new TH_ContactManager();
+		
+		// Act
+		Map<Boolean, List<Contact>> resultSavedContactsBySuccessMap;
+        System.runAs(TestRunner){
+            Test.startTest();
+            {
+                resultSavedContactsBySuccessMap = managerUnderTest.saveContactList(testContactList);
+            }
+            Test.stopTest();
+        }
+
+		// Assert
+		// TODO: System.assert(MOCK_ContactDao.insertedContactList);
+		System.assertEquals(resultSavedContactsBySuccessMap.get(true).size(), 3);
+		System.assertEquals(resultSavedContactsBySuccessMap.get(false).size(), 1);
+	}
 	
 	private static testMethod void assignShouldSetOnlyQualifiedContactsToNewTitle(){
 		testAssign(DAO_Timing.LATER);		
@@ -34,7 +64,7 @@ private class TH_ContactManagerTest {
 		DAO_ContactDao mockContactDao = new MOCK_ContactDao();
 		MOCK_ContactDao.updatedContactList = false;
 		mockContactDao.doInsert(testContactList); 
-		TH_ContactManager managerUnderTest = new TH_ContactManager(mockContactDao);
+		TH_ContactManager managerUnderTest = new TH_ContactManager(mockContactDao); 
 		
 		// Act
 		List<Contact> resultContactList;

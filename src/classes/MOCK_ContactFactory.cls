@@ -22,7 +22,7 @@ public class MOCK_ContactFactory {
 		if (insertNow){
 			TEST_MockDMLHelper.mockInsert  ( contact );
 		}
-		
+
 		return contact;
 	} 
 	

@@ -1,6 +1,5 @@
 public class DAO_SObjectDMLHelper {
-	public static UTIL_ResultListWrapper doInsert(List<SObject> sObjectList, boolean allOrNone)  
-    { 
+	public static UTIL_ResultListWrapper doInsert(List<SObject> sObjectList, boolean allOrNone) { 
     	return postDmlProcess('Insert', sObjectList, new UTIL_ResultListWrapper(Database.insert(sObjectList, allOrNone)));
     } 
 
