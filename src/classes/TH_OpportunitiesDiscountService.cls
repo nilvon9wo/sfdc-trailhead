@@ -21,7 +21,7 @@ global class TH_OpportunitiesDiscountService {
 	}
  
 	public List<Decimal> applyDiscounts(List<Id> opportunityIdList, Decimal discountPercentage, TH_OpportunitiesDiscountServiceOptions config) {
-		Map<Id, Decimal> discountPercentageByOpportunityId = TH_Opportunities.getDefaultDiscountMap(opportunityIdList);
+		Map<Id, Decimal> discountPercentageByOpportunityId = TH_OpportunitiesDefaultDiscounter.getDefaultDiscountMap(opportunityIdList);
 		return this.applyDiscounts(discountPercentageByOpportunityId, new TH_OpportunitiesDiscountServiceOptions()); 
 	}
 	
