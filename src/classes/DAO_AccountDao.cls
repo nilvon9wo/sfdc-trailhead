@@ -18,6 +18,10 @@ public virtual class DAO_AccountDao {
 	public virtual List<Account> getByName (String name) {
 		return [ SELECT id FROM Account WHERE name =: name ];
 	}
+
+	public virtual List<Account> getByIds (List<Id> accountIdList) {
+		return [ SELECT id FROM Account WHERE id IN :accountIdList ];
+	}
 	
 	public virtual List<Account> getWithContactByAccountName (String accountName) {
 		return [ 
