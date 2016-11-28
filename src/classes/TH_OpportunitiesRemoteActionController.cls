@@ -1,12 +1,12 @@
 public class TH_OpportunitiesRemoteActionController {
-	private TH_OpportunitiesService opportunitiesService;
+	private TH_OpportunitiesDiscountService opportunitiesService;
 	
-	TH_OpportunitiesRemoteActionController(TH_OpportunitiesService opportunitiesService){
+	TH_OpportunitiesRemoteActionController(TH_OpportunitiesDiscountService opportunitiesService){
 		this.opportunitiesService = opportunitiesService;
 	} 
 	
 	TH_OpportunitiesRemoteActionController(){ 
-		this(new TH_OpportunitiesService());
+		this(new TH_OpportunitiesDiscountService());
 	}
 
 	@RemoteAction

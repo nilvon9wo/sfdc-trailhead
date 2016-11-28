@@ -48,7 +48,7 @@ public class TH_OpportunitiesDiscountStrategy extends UTIL_IfPopulatedListStrate
 		for (Id opportunityId : opportunityIdList) {
 			Decimal discountPercentage = discountPercentageByOpportunityId.get(opportunityId);
 			if (discountPercentage < 0 || discountPercentage > 100) {
-				throw new TH_OpportunitiesServiceException(
+				throw new TH_OpportunitiesDiscountServiceException(
 					'Invalid discount of ' + discountPercentage + 'to apply to Opportunity ' + opportunityId + '.'
 				);
 			}
@@ -57,6 +57,6 @@ public class TH_OpportunitiesDiscountStrategy extends UTIL_IfPopulatedListStrate
 	}
 	
 	public void doIfEmpty(){
-		throw new TH_OpportunitiesServiceException('Opportunities not specified.');
+		throw new TH_OpportunitiesDiscountServiceException('Opportunities not specified.');
 	}
 }

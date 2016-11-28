@@ -1,14 +1,14 @@
 public with sharing class TH_OpportunitiesDiscountBatchJob implements Database.Batchable<SObject> {
 	public Decimal discountPercentage {get; private set;}    
-	private TH_OpportunitiesService opportunitiesService;
+	private TH_OpportunitiesDiscountService opportunitiesService;
 	
-	public TH_OpportunitiesDiscountBatchJob(Decimal discountPercentage, TH_OpportunitiesService opportunitiesService){
+	public TH_OpportunitiesDiscountBatchJob(Decimal discountPercentage, TH_OpportunitiesDiscountService opportunitiesService){
 		this.discountPercentage = discountPercentage;
 		this.opportunitiesService = opportunitiesService;
 	} 
 	
 	public TH_OpportunitiesDiscountBatchJob(Decimal discountPercentage) {
-		this(discountPercentage, new TH_OpportunitiesService());
+		this(discountPercentage, new TH_OpportunitiesDiscountService());
 	}
 	
 	public Database.QueryLocator start(Database.BatchableContext context) {

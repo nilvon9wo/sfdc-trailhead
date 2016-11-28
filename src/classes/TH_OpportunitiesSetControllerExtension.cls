@@ -1,14 +1,14 @@
 public class TH_OpportunitiesSetControllerExtension { 
 	private ApexPages.StandardSetController standardSetController;
-	private TH_OpportunitiesService opportunitiesService;
+	private TH_OpportunitiesDiscountService opportunitiesService;
 	
-	TH_OpportunitiesSetControllerExtension(ApexPages.StandardSetController standardSetController, TH_OpportunitiesService opportunitiesService){
+	TH_OpportunitiesSetControllerExtension(ApexPages.StandardSetController standardSetController, TH_OpportunitiesDiscountService opportunitiesService){
 		this.standardSetController = standardSetController;
 		this.opportunitiesService = opportunitiesService;
 	} 
 	
 	TH_OpportunitiesSetControllerExtension(ApexPages.StandardSetController standardSetController){ 
-		this(standardSetController, new TH_OpportunitiesService());
+		this(standardSetController, new TH_OpportunitiesDiscountService());
 	}
 
 	public Decimal discountPercentage {get; private set;}    

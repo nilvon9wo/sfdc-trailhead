@@ -1,13 +1,13 @@
 @RestResource(urlMapping='/opportunity/*/apply-discount')
 global with sharing class TH_OpportunitiesDiscountRestResource {
-	TH_OpportunitiesService opportunitiesService;
+	TH_OpportunitiesDiscountService opportunitiesService;
 	
-	TH_OpportunitiesDiscountRestResource(TH_OpportunitiesService opportunitiesService){
+	TH_OpportunitiesDiscountRestResource(TH_OpportunitiesDiscountService opportunitiesService){
 		this.opportunitiesService = opportunitiesService;
 	}
 	
 	TH_OpportunitiesDiscountRestResource(){
-		this(new TH_OpportunitiesService());
+		this(new TH_OpportunitiesDiscountService());
 	}
 	
 	@HttpPost
