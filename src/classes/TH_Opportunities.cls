@@ -1,82 +1,58 @@
-public class TH_Opportunities extends fflib_SObjectDomain {
-	List<Opportunity> opportunityList;
+public class TH_Opportunities {
+	fflib_SObjectUnitOfWork unitOfWork;
+	List<Opportunity> opportunityList; 
 	Map<Id, Decimal> discountPercentageByOpportunityId;
 	DAO_AccountDao accountDao;
 	
-	public TH_Opportunities(List<Opportunity> opportunityList, Map<Id, Decimal> discountPercentageByOpportunityId, DAO_AccountDao accountDao){
-		super(opportunityList);
-		if (Opportunity_Settings__c.getInstance().security_disabled__c) {
-			Configuration.disableTriggerCRUDSecurity();
-		}
-		
-		this.opportunityList = opportunityList;
+	public TH_Opportunities(
+			List<Opportunity> opportunityList, 
+			fflib_SObjectUnitOfWork unitOfWork, 
+			Map<Id, Decimal> discountPercentageByOpportunityId, 
+			DAO_AccountDao accountDao
+		){
+		this.opportunityList = opportunityList; 
 		this.discountPercentageByOpportunityId = discountPercentageByOpportunityId;
 		this.accountDao = accountDao;
+		this.unitOfWork = unitOfWork;
 	}
 	
-	public TH_Opportunities(List<Opportunity> opportunityList) {
-		this(opportunityList, TH_OpportunitiesDefaultDiscounter.getDefaultDiscountMap(opportunityList), new DAO_AccountDao());
+	public TH_Opportunities(List<Opportunity> opportunityList, fflib_SObjectUnitOfWork unitOfWork) {
+		this(opportunityList, unitOfWork, TH_OpportunitiesDefaultDiscounter.getDefaultDiscountMap(opportunityList), new DAO_AccountDao());
 	}
 	
-	public class Constructor implements fflib_SObjectDomain.IConstructable {
-		public fflib_SObjectDomain construct(List<SObject> opportunityList) {
-			return new TH_Opportunities (opportunityList);
-		}
-	} 
-	
-	public override void onApplyDefaults() {
-		for (Opportunity opportunity : (List<Opportunity>) Records) {
+	public TH_Opportunities setDefaultDiscountTypes(List<Opportunity> opportunityList){
+		for (Opportunity opportunity : opportunityList) {
 			if (opportunity.discount_type__c == null) { 
 				opportunity.discount_type__c = Opportunity_Settings__c.getInstance().discount_type__c;
+				unitOfWork.registerDirty(opportunity);
 			}
 		}
+		return this;
 	}
-	
-	public override void onAfterInsert() {
+
+	public TH_Opportunities applyDiscounts(List<Decimal> discountList){
+		for(Opportunity opportunity: opportunityList) {
+			Decimal discountPercentage = this.discountPercentageByOpportunityId.get(opportunity.id);
+			Decimal factor = 1 - (discountPercentage == null ? 0 : discountPercentage / 100);
+			
+			TH_OpportunitiesLineItemDiscountStrategy discountStrategy = 
+				new TH_OpportunitiesLineItemDiscountStrategy(this.unitOfWork, opportunity, factor, discountList);
+					
+			discountStrategy.execute(opportunity.opportunityLineItems);
+		}
+		return this;  
+	}
+
+	public TH_Opportunities updateOpportunityActivity(List<Opportunity> opportunityList){
 		List<Id> accountIdList = new List<Id>();
-		for (Opportunity opportunity : (List<Opportunity>) Records) {
+		for (Opportunity opportunity : opportunityList) {
 			if (opportunity.accountId != null) {
 				accountIdList.add(opportunity.accountId);
 			}
 		}
 		
-		fflib_SObjectUnitOfWork unitOfWork = new fflib_SObjectUnitOfWork( 
-			new Schema.SObjectType[]{ Account.SObjectType } 
-		);
-		TH_Accounts accounts = new TH_Accounts(this.accountDao.getByIds(accountIdList));  
-		accounts.updateOpportunityActivity(unitOfWork);
-		unitOfWork.commitWork();
-	}
-	
-	public override void onValidate() {
-		for (Opportunity opportunity : (List<Opportunity>) Records) {
-			if (opportunity.type.startsWith('Existing') && opportunity.accountId == null) {
-				opportunity.accountId.addError('You must provide an Account when creating Opportunities for existing Customers.');
-			}
-		}
-	}
-
-	public override void onValidate(Map<Id, SObject> existingRecords) {
-		for (Opportunity opportunity : (List<Opportunity>) Records) {
-			Opportunity existingOpportunity = (Opportunity) existingRecords.get(opportunity.id);
-			if (opportunity.type != existingOpportunity.type) {
-				opportunity.type.addError('You cannot change the Opportunity typo once it has been created.');
-			}
-		}
-	}
-
-	public fflib_SObjectUnitOfWork applyDiscounts(fflib_SObjectUnitOfWork unitOfWork, List<Decimal> discountList){
-		
-		for(Opportunity opportunity: (List<Opportunity>) Records) {
-			Decimal discountPercentage = this.discountPercentageByOpportunityId.get(opportunity.id);
-			Decimal factor = 1 - (discountPercentage == null ? 0 : discountPercentage / 100);
-			
-			TH_OpportunitiesLineItemDiscountStrategy discountStrategy = 
-				new TH_OpportunitiesLineItemDiscountStrategy(unitOfWork, opportunity, factor, discountList);
-					
-			discountStrategy.execute(opportunity.opportunityLineItems);
-		}
-		
-		return unitOfWork;  
+		TH_Accounts accounts = new TH_Accounts(accountDao.getByIds(accountIdList), unitOfWork);  
+		accounts.updateOpportunityActivity();
+		return this;
 	}
 }
