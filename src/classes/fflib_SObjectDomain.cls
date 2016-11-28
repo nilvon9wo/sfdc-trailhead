@@ -1,6 +1,4 @@
 /**
- * From: https://github.com/financialforcedev/fflib-apex-common/blob/master/fflib/src/classes/fflib_SObjectDomain.cls
- * 
  * Copyright (c) 2012, FinancialForce.com, inc
  * All rights reserved.
  *
@@ -93,6 +91,7 @@ public virtual with sharing class fflib_SObjectDomain
 	 * Constructs the domain class with the data on which to apply the behaviour implemented within
 	 *
 	 * @param sObjectList A concreate list (e.g. List<Account> vs List<SObject>) of records
+
 	 **/
 	public fflib_SObjectDomain(List<SObject> sObjectList)
 	{

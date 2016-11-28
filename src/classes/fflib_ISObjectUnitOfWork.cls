@@ -1,6 +1,4 @@
 /*
-* From: https://github.com/financialforcedev/fflib-apex-common/blob/master/fflib/src/classes/fflib_ISObjectUnitOfWork.cls
-* 
 * FinancialForce.com, inc. claims copyright in this software, its screen
 * display designs and supporting documentation. FinancialForce and
 * FinancialForce.com are trademarks of FinancialForce.com, inc. Any
@@ -78,7 +76,7 @@ public interface fflib_ISObjectUnitOfWork
 	 * Register a generic peace of work to be invoked during the commitWork phase
 	 *
 	 * @param work Work to be registered
-	 **/ 
+	 **/
 	void registerWork(fflib_SObjectUnitOfWork.IDoWork work);
 	/**
 	 * Registers the given email to be sent during the commitWork
