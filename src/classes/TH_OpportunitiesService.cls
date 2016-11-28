@@ -19,13 +19,10 @@ global class TH_OpportunitiesService {
 		discountStrategy.execute(discountPercentageByOpportunityId.values());
 		return discountList;
 	}
-
+ 
 	public List<Decimal> applyDiscounts(List<Id> opportunityIdList, Decimal discountPercentage, TH_OpportunitiesServiceOptions config) {
-		Map<Id, Decimal> discountPercentageByOpportunityId = new Map<Id, Decimal>();
-		for (Id id : opportunityIdList) {
-			discountPercentageByOpportunityId.put(id, discountPercentage);	 
-		}
-		return this.applyDiscounts(discountPercentageByOpportunityId, new TH_OpportunitiesServiceOptions());
+		Map<Id, Decimal> discountPercentageByOpportunityId = TH_Opportunities.getDefaultDiscountMap(opportunityIdList);
+		return this.applyDiscounts(discountPercentageByOpportunityId, new TH_OpportunitiesServiceOptions()); 
 	}
 	
 	public List<Decimal> applyDiscounts(List<TH_OpportunityDiscountInfo> opportunityDiscountInfoList) {
