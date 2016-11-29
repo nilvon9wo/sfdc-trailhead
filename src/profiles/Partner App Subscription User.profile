@@ -307,6 +307,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_OpportunitiesValidator</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_OpportunityDiscountInfo</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -328,6 +332,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_UnitOfWorkTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TRIG_AccountsTriggerHandler</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TRIG_OpportunitiesTriggerHandler</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
