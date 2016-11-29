@@ -53,7 +53,7 @@ public virtual class DAO_ContactDao {
 	}
 
 	public List<List<Contact>> getFromAccountsByAccountName(String accountName) {
-		List<Account> accountList = accountDao.getWithContactByAccountName(accountName);
+		List<Account> accountList = accountDao.getByName(accountName);
 		List<List<Contact>> contactListList = new List<List<Contact>>();
 		for (Account account: accountList){
 			contactListList.add(account.Contacts);

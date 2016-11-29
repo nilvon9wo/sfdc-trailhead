@@ -1,11 +1,17 @@
 public virtual class DAO_OpportunitiesDao {
-	public virtual List<Opportunity> getByIds (Set<Id> idSet) {
-		return [
-			SELECT amount,
-				(SELECT unitPrice FROM OpportunityLineItems)
-			FROM Opportunity
-			WHERE id IN :idSet
-		];
+
+	DAO_OpportunitiesSelector selector;
+	
+	DAO_OpportunitiesDao(DAO_OpportunitiesSelector selector){
+		this.selector = selector;
+	}
+ 
+	DAO_OpportunitiesDao(){
+		this(new DAO_OpportunitiesSelector());
+	}
+	
+	public virtual List<Opportunity> getByIds (List<Id> idList) {
+		return this.selector.selectById(idList); 
 	}
 	
 	public virtual void tryUpdate(fflib_SObjectUnitOfWork unitOfWork){
