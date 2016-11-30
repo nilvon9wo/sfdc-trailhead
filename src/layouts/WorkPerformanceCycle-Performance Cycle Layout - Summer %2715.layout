@@ -51,27 +51,6 @@
         <fields>ActivityFrom</fields>
         <fields>ActivityTo</fields>
     </miniLayout>
-    <relatedLists>
-        <fields>Name</fields>
-        <fields>FeedbackType</fields>
-        <fields>DueDate</fields>
-        <relatedList>CycleQuestionSetRelatedList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Name</fields>
-        <fields>Subject</fields>
-        <fields>Recipient</fields>
-        <fields>FeedbackRequestState</fields>
-        <relatedList>CycleRequestRelatedList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Name</fields>
-        <fields>Status</fields>
-        <fields>StartDate</fields>
-        <fields>EndDate</fields>
-        <fields>Message</fields>
-        <relatedList>JobTrackerRelatedList</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

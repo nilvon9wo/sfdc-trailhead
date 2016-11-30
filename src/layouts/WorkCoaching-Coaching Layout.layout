@@ -50,30 +50,6 @@
         <style>CustomLinks</style>
     </layoutSections>
     <relatedLists>
-        <fields>Name</fields>
-        <fields>Progress</fields>
-        <fields>Status</fields>
-        <fields>DueDate</fields>
-        <fields>CurrentValue</fields>
-        <fields>InitialValue</fields>
-        <fields>TargetValue</fields>
-        <fields>LastComment</fields>
-        <fields>Goal</fields>
-        <relatedList>OpenRelatedMetricList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>Name</fields>
-        <fields>Progress</fields>
-        <fields>Status</fields>
-        <fields>DueDate</fields>
-        <fields>CurrentValue</fields>
-        <fields>InitialValue</fields>
-        <fields>TargetValue</fields>
-        <fields>LastComment</fields>
-        <fields>Goal</fields>
-        <relatedList>CompletedRelatedMetricList</relatedList>
-    </relatedLists>
-    <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>ACTIVITY.TASK</fields>
         <fields>TASK.DUE_DATE</fields>

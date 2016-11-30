@@ -42,14 +42,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <relatedLists>
-        <fields>Name</fields>
-        <fields>Number</fields>
-        <fields>Type</fields>
-        <fields>IsConfidentialAnswer</fields>
-        <fields>IsOptional</fields>
-        <relatedList>QuestionsRelatedList</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
