@@ -296,7 +296,7 @@ public virtual class fflib_SObjectUnitOfWork
 		try
 		{		
 			// notify we're starting the DML operations
-			onDMLStarting(); 
+			onDMLStarting();
 			// Insert by type
 			for(Schema.SObjectType sObjectType : m_sObjectTypes)
 			{
@@ -309,6 +309,7 @@ public virtual class fflib_SObjectUnitOfWork
 				else if (Test.isRunningTest() && insertMode == TEST_DummyInsertModeEnum.MOCK) {
 					TEST_MockDMLHelper.mockInsert(sObjectList);
 				}
+				
 			}					
 			// Update by type
 			for(Schema.SObjectType sObjectType : m_sObjectTypes)

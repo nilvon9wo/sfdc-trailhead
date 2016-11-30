@@ -8,4 +8,5 @@
     <tab>standard-Contact</tab>
     <tab>standard-Lead</tab>
     <tab>standard-Opportunity</tab>
+    <tab>standard-Product2</tab>
 </CustomApplication>

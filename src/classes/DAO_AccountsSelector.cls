@@ -9,7 +9,7 @@ public class DAO_AccountsSelector {
 			SELECT id, name,
 				(SELECT firstName, lastName FROM Contacts) 
 			FROM Account 
-			WHERE name = :accountName  
+			WHERE name = :accountName 
 		];
 	}
 
@@ -17,7 +17,7 @@ public class DAO_AccountsSelector {
 		return [ SELECT id FROM Account WHERE name LIKE :nameLikeness ];
 	}
 
-	public virtual List<Account> selectById (List<Id> accountIdList) {
+	public virtual List<Account> selectAccountListById (List<Id> accountIdList) {
 		return [ SELECT id FROM Account WHERE id IN :accountIdList ];
 	}
 	
