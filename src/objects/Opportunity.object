@@ -114,7 +114,7 @@
         <trackTrending>false</trackTrending>
     </fields>
     <fields>
-        <fullName>Discount_Type__c</fullName>
+        <fullName>DiscountType__c</fullName>
         <externalId>false</externalId>
         <label>Discount Type</label>
         <required>false</required>

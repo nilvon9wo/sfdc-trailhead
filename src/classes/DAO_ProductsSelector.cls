@@ -10,11 +10,11 @@ public class DAO_ProductsSelector extends fflib_SObjectSelector {
 
     public List<Schema.SObjectField> getSObjectFieldList() {
         return new List<Schema.SObjectField>{
-                Product2.Description,
-                Product2.Id,
-                Product2.IsActive,
-                Product2.Name,
-                Product2.ProductCode
+                Product2.description,
+                Product2.id,
+                Product2.isActive,
+                Product2.name,
+                Product2.productCode
         };
     }
 
