@@ -3,8 +3,9 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
     public List<Schema.SObjectField> getSObjectFieldList() {
         return new List<Schema.SObjectField>{
                 Account.annualRevenue,
-                Account.name,
                 Account.description,
+                Account.id,
+                Account.name,
                 Account.phone
         };
     }
@@ -26,6 +27,13 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
                 newQueryFactory()
                         .toSOQL()
         );
+    }
+
+    public Map<Id, Account> selectAllAccountMap() {
+        return new Map<Id, Account>((List<Account>) Database.query(
+                newQueryFactory()
+                        .toSOQL()
+        ));
     }
 
     public List<Account> selectByExactName(String accountName) {
@@ -53,4 +61,13 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
                         .toSOQL()
         );
     }
+    
+	public List<Account> selectByBillingState(String stateAbbreviation) {
+        return (List<Account>) Database.query(
+                newQueryFactory()
+                        .setCondition('billingState =: stateAbbreviation')
+                        .toSOQL()
+        );
+	}
+    
 }

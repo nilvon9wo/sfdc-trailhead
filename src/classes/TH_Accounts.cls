@@ -11,7 +11,7 @@ public class TH_Accounts  {
 		for (Account account : (List<Account>) accountList) {
 			if (account.description == null) { 
 				account.description = 'Domain classes rock!';
-				unitOfWork.registerDirty(account);
+				unitOfWork.registerNew(account);
 			}
 		}
 		return this;
@@ -21,7 +21,7 @@ public class TH_Accounts  {
 		for (Account newAccount : newAccountList) {
 			String oldDescription = oldAccountByIdMap.get(newAccount.id).description;
 			newAccount.annualRevenue = oldDescription.getLevenshteinDistance(newAccount.description);
-			unitOfWork.registerDirty(newAccount);
+			unitOfWork.registerNew(newAccount);
 		}
 		return this;
 	}

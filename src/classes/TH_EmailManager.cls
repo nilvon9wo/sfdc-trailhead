@@ -1,4 +1,4 @@
-public class TH_EmailManager {  
+public with sharing class TH_EmailManager {  
 	private MSG_Postman postman;
 	private	MSG_PostalInspector postalInspector;
 	

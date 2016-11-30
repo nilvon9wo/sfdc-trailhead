@@ -48,4 +48,9 @@ public virtual class DAO_AccountDao {
             consumer.execute(accountArray);
         }
     }
+
+	public List<Account> getByBillingState(String stateAbbreviation) {
+		return this.selector.selectByBillingState(stateAbbreviation); 
+	}
+
 }
