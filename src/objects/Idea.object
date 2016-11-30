@@ -20,10 +20,16 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>Categories</fullName>
+        <picklist>
+            <sorted>false</sorted>
+        </picklist>
         <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Status</fullName>
+        <picklist>
+            <sorted>false</sorted>
+        </picklist>
         <type>Picklist</type>
     </fields>
     <listViews>

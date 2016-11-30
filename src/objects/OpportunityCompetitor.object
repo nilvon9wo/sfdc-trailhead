@@ -27,6 +27,9 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>CompetitorName</fullName>
+        <picklist>
+            <sorted>false</sorted>
+        </picklist>
         <type>Picklist</type>
     </fields>
 </CustomObject>

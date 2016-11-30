@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
-    <formFactors>Small</formFactors>
-    <formFactors>Medium</formFactors>
-    <formFactors>Large</formFactors>
-    <navType>Standard</navType>
+    <defaultLandingTab>standard-home</defaultLandingTab>
     <tab>standard-home</tab>
     <tab>standard-Opportunity</tab>
     <tab>standard-Lead</tab>
@@ -22,5 +19,4 @@
     <tab>standard-Case</tab>
     <tab>standard-News</tab>
     <tab>standard-ForecastingLightning</tab>
-    <uiType>Lightning</uiType>
 </CustomApplication>
