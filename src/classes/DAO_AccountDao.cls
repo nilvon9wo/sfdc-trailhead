@@ -35,11 +35,11 @@ public virtual class DAO_AccountDao {
     }
 
     public virtual List<Account> getByIds(List<Id> accountIdList) {
-        return this.selector.selectAccountListById(accountIdList);
+        return this.selector.selectById(accountIdList);
     }
 
     public virtual Map<Id, Account> getMapByIds(List<Id> accountIdList) {
-        return new Map<Id, Account>(this.selector.selectAccountListById(accountIdList));
+        return new Map<Id, Account>(this.selector.selectById(accountIdList));
     }
 
     public void consumeAccountArraysByNamesLike(TH_AccountArrayConsumerInterface consumer, String nameLikeness) {

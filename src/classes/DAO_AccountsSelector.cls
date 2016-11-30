@@ -1,25 +1,56 @@
-public class DAO_AccountsSelector {
+public class DAO_AccountsSelector extends fflib_SObjectSelector {
 
-	public virtual List<Account> selectAllAccountList() {
-		return [ SELECT name, phone FROM Account ];
-	}
-	
-	public virtual List<Account> selectByExactName (String accountName) {
-		return [ 
-			SELECT id, name,
-				(SELECT firstName, lastName FROM Contacts) 
-			FROM Account 
-			WHERE name = :accountName 
-		];
-	}
+    public List<Schema.SObjectField> getSObjectFieldList() {
+        return new List<Schema.SObjectField>{
+                Account.annualRevenue,
+                Account.name,
+                Account.description,
+                Account.phone
+        };
+    }
 
-	public virtual List<Account> selectByNameLikeness (String nameLikeness) {
-		return [ SELECT id FROM Account WHERE name LIKE :nameLikeness ];
-	}
+    public Schema.SObjectType getSObjectType() {
+        return Account.sObjectType;
+    }
 
-	public virtual List<Account> selectAccountListById (List<Id> accountIdList) {
-		return [ SELECT id FROM Account WHERE id IN :accountIdList ];
-	}
-	
-    
+    public List<Account> selectById(Set<Id> idSet) {
+        return (List<Account>) selectSObjectsById(idSet);
+    }
+
+    public List<Account> selectById(List<Id> idList) {
+        return this.selectSObjectsById(new Set<Id>(idList));
+    }
+
+    public List<Account> selectAllAccountList() {
+        return (List<Account>) Database.query(
+                newQueryFactory()
+                        .toSOQL()
+        );
+    }
+
+    public List<Account> selectByExactName(String accountName) {
+        return (List<Account>) Database.query(
+                newQueryFactory()
+                        .setCondition('name = :accountName')
+                        .toSOQL()
+        );
+    }
+
+    public virtual List<Account> selectWithContactsByExactName (String accountName) {
+        fflib_QueryFactory accountQueryFactory = newQueryFactory();
+        fflib_QueryFactory contactQueryFactory = new DAO_ContactSelector()
+                .addQueryFactorySubselect(accountQueryFactory);
+
+        return (List<Account>) Database.query(
+                accountQueryFactory.setCondition('name = :accountName').toSOQL()
+        );
+    }
+
+    public List<Account> selectByNameLikeness(String nameLikeness) {
+        return (List<Account>) Database.query(
+                newQueryFactory()
+                        .setCondition('LIKE :nameLikeness')
+                        .toSOQL()
+        );
+    }
 }
