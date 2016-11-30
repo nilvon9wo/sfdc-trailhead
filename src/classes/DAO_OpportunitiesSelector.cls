@@ -1,16 +1,49 @@
-public class DAO_OpportunitiesSelector {
+public class DAO_OpportunitiesSelector extends fflib_SObjectSelector {
 
-	public virtual List<Opportunity> selectById (List<Id> idList) {
-		return [
-			SELECT amount,
-				(SELECT unitPrice FROM OpportunityLineItems)
-			FROM Opportunity
-			WHERE id IN :idList 
-		]; 
-	}
+    public List<Schema.SObjectField> getSObjectFieldList() {
+        return new List<Schema.SObjectField>{
+                Opportunity.amount
+        };
+    }
 
-	public virtual List<Opportunity> selectById (Set<Id> idSet) {
-		return this.selectById(new List<Id>(idSet)); 
-	}
+    public Schema.SObjectType getSObjectType() {
+        return Opportunity.sObjectType;
+    }
 
+    public List<Opportunity> selectById(Set<Id> idSet) {
+        String query = String.format(
+                'SELECT {0} ' +
+                        'FROM {1}, ' +
+                        '(SELECT unitPrice FROM OpportunityLineItems) ' +
+                        'WHERE SystemModStamp = LAST_N_DAYS:30 ' +
+                        'ORDER BY {2} ',
+                new List<String>{
+                        getFieldListString(),
+                        getSObjectName(),
+                        getOrderBy()
+                }
+        );
+        return (List<Opportunity>) Database.query(query);
+    }
+
+    public List<Opportunity> selectById(List<Id> idList) {
+        return this.selectById(new Set<Id>(idList));
+    }
+
+    public List<Opportunity> selectRecentlyUpdated(Integer recordLimit) {
+        String query = String.format(
+                'SELECT {0} ' +
+                        'FROM {1} ' +
+                        'WHERE SystemModStamp = LAST_N_DAYS:30 ' +
+                        'ORDER BY {2} ' +
+                        'LIMIT {3}',
+                new List<String>{
+                        getFieldListString(),
+                        getSObjectName(),
+                        getOrderBy(),
+                        String.valueOf(recordLimit)
+                }
+        );
+        return (List<Opportunity>) Database.query(query);
+    }
 }
