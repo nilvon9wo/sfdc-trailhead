@@ -19,6 +19,7 @@ public class UTIL_MapIdentifierHelper
 		if (currentSObject.getSObjectType() == Attachment.SObjectType)     		{ return create ((Attachment) 		  currentSobject); }
 		if (currentSObject.getSObjectType() == Contact.SObjectType)     		{ return create ((Contact) 		  	  currentSobject); }
 		if (currentSObject.getSObjectType() == Document.SObjectType)     		{ return create ((Document)		  	  currentSobject); }
+		if (currentSObject.getSObjectType() == Opportunity.SObjectType)     	{ return create ((Opportunity)		  currentSobject); }
 
 		// TODO: Modify this code to create unique Ids for more SObjects, which will usually have different fields.
 		throw new MapIdentifierUndefinedException('No map identifier has been defined for : ' + currentSObject.getSObjectType());
@@ -29,6 +30,7 @@ public class UTIL_MapIdentifierHelper
 	public static String create (Attachment attachment)  { return 'Attachment' + concatenate(attachment, new List<String>{ 'name', 'parentId'});  			}
 	public static String create (Contact    contact)	 { return 'Contact'    + concatenate(contact, new List<String>{ 'lastName', 'firstName', 'email'}); }
 	public static String create (Document   document)	 { return 'Document'   + concatenate(document,   new List<String>{ 'name', 'contentType', 'type', 'folderId'}); }
+	public static String create (Opportunity opportunity){ return 'Opportunity'+ concatenate(opportunity, new List<String>{ 'name', 'type', 'accountId'}); }
 
 	@testVisible private static String concatenate(SObject currentSobject, List<String> fieldNameList)
 	{

@@ -7,7 +7,12 @@ public class TH_OpportunitiesDefaultDiscounter {
 	}
 	
 	public static Map<Id, Decimal> getDefaultDiscountMap(List<Opportunity> opportunityList){
-		List<Id> opportunityIdList = new List<Id>((new Map<Id, Opportunity>(opportunityList)).keySet());
+		List<Id> opportunityIdList = new List<Id>();
+		for (Opportunity opportunity: opportunityList) {
+			if (opportunity.id != null) {
+				opportunityIdList.add(opportunity.id);
+			}
+		}
 		return getDefaultDiscountMap(opportunityIdList);
 	}
 	
@@ -18,4 +23,4 @@ public class TH_OpportunitiesDefaultDiscounter {
 		}
 		return discountPercentageByOpportunityId;
 	} 
-}
+} 

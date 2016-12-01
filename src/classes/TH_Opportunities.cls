@@ -16,21 +16,23 @@ public class TH_Opportunities {
 		this.unitOfWork = unitOfWork;
 	}
 
-/*
 	public TH_Opportunities(List<Opportunity> opportunityList, fflib_SObjectUnitOfWork unitOfWork) {
 		this(opportunityList, unitOfWork, TH_OpportunitiesDefaultDiscounter.getDefaultDiscountMap(opportunityList), new DAO_AccountDao());
 	}
-	
+
 	public TH_Opportunities setDefaultDiscountTypes(List<Opportunity> opportunityList){
 		for (Opportunity opportunity : opportunityList) {
 			if (opportunity.discountType__c == null) {
-				opportunity.discountType__c = Opportunity_Settings__c.getInstance().discountType__c;
-				unitOfWork.registerDirty(opportunity);
+				opportunity.discountType__c = Opportunity_Settings__c.getInstance().discount_type__c;
+				if (opportunity.id != null){
+					unitOfWork.registerDirty(opportunity);
+				} else {
+					unitOfWork.registerNew(opportunity);
+				}
 			}
 		}
 		return this;
 	}
-*/
 
 	public TH_Opportunities applyDiscounts(List<Decimal> discountList){
 		for(Opportunity opportunity: opportunityList) {

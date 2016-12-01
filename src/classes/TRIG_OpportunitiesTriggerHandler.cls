@@ -1,7 +1,7 @@
 public class TRIG_OpportunitiesTriggerHandler extends fflib_SObjectDomain {
 	static fflib_SObjectUnitOfWork unitOfWork = new fflib_SObjectUnitOfWork( new Schema.SObjectType[]{ 
-		Opportunity.SObjectType,
-		Account.SObjectType 
+		Account.SObjectType, 
+		Opportunity.SObjectType 
 	});
   
 	List<Opportunity> opportunityList;
@@ -16,7 +16,7 @@ public class TRIG_OpportunitiesTriggerHandler extends fflib_SObjectDomain {
 		this.opportunities = opportunities;
 		this.validator = validator;
 	}
- 
+  
 	public TRIG_OpportunitiesTriggerHandler(List<Opportunity> opportunityList) {
 		this(opportunityList, new TH_Opportunities(opportunityList, unitOfWork), new TH_OpportunitiesValidator());
 	}

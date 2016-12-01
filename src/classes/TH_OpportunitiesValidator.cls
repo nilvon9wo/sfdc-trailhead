@@ -2,7 +2,14 @@ public class TH_OpportunitiesValidator {
 	public Boolean newRecordswRequireAccount(List<Opportunity> opportunityList){
 		Boolean success = true;
 		for (Opportunity opportunity : opportunityList) {
-			if (opportunity.type.startsWith('Existing') && opportunity.accountId == null) {
+			if ( opportunity.type == null ) {
+				opportunity.accountId.addError('You must provide a Type when creating Opportunities.');
+			}
+			
+			if ( opportunity.type != null 
+					&& opportunity.type.startsWith('Existing') 
+					&& opportunity.accountId == null
+				) {
 				opportunity.accountId.addError('You must provide an Account when creating Opportunities for existing Customers.');
 				success = false;
 			}
