@@ -469,8 +469,11 @@
     </fields>
     <listViews>
         <fullName>AllOpportunities</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
         <filterScope>Everything</filterScope>
-        <label>All Opportunities</label>
+        <label>Recent Opportunities</label>
     </listViews>
     <listViews>
         <fullName>ClosingNextMonth</fullName>

@@ -247,6 +247,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_AccountsSampleBatchable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_CaseCloseResource</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -284,6 +288,18 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_ContactManagerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_ContactUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_ContactsFutureWebCalloutQueueable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_ContactsFutureWebCalloutService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -392,6 +408,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_UnitOfWorkTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TRIG_AccountTriggerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>

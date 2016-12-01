@@ -23,4 +23,4 @@ public class TH_OpportunitiesDefaultDiscounter {
 		}
 		return discountPercentageByOpportunityId;
 	} 
-} 
+}
