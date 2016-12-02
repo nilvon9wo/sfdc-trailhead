@@ -45,7 +45,7 @@ public virtual class DAO_ContactDao {
 			FROM Contact 
 			WHERE lastName =: lastName
 				AND mailingPostalCode =: postalCode
-		];
+		]; 
 	}
 	
 	public virtual List<Contact> getByDepartment(String targetDepartment) {
@@ -70,5 +70,4 @@ public virtual class DAO_ContactDao {
 			Account.getSObjectType() => accountResult
 		};
 	}
-	
 }

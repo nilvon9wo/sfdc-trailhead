@@ -361,7 +361,7 @@ public virtual with sharing class fflib_SObjectDomain
 		{
 			return;
 		}
-
+ 
 		// Invoke the applicable handler
 		if(isBefore)
 	    {

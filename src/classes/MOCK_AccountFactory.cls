@@ -11,8 +11,13 @@ public class MOCK_AccountFactory {
 	}
 	
 	public static Account create(fflib_SObjectUnitOfWork unitOfWork, Integer i) {
+		Account account = create(unitOfWork, 'Challange Complete Test Account ' + i);
+		return account; 
+	}
+
+	public static Account create(fflib_SObjectUnitOfWork unitOfWork, String name) {
 		Account account = new Account(
-			name = 'Challange Complete Test Account ' + i,
+			name = name,
 			billingState = defaultBillingState
 		);
 		unitOfWork.registerNew(account);

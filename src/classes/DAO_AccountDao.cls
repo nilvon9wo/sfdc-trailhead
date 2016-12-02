@@ -25,7 +25,7 @@ public virtual class DAO_AccountDao {
         List<Account> accountList = this.getByName(name);
         return this.doDelete(accountList);
     }
-
+ 
     public virtual List<Account> getAllsNamesAndPhones() {
         return this.selector.selectAllAccountList();
     }
@@ -34,12 +34,20 @@ public virtual class DAO_AccountDao {
         return this.selector.selectByExactName(name);
     }
 
+    public virtual List<Account> getWithContactByAccountName(String name) {
+        return this.selector.selectWithContactsByExactName(name);
+    }
+
     public virtual List<Account> getByIds(List<Id> accountIdList) {
         return this.selector.selectById(accountIdList);
     }
 
     public virtual Map<Id, Account> getMapByIds(List<Id> accountIdList) {
         return new Map<Id, Account>(this.selector.selectById(accountIdList));
+    }
+    
+    public virtual List<Account> getWithOpportuntiesByAccountId(Set<Id> accountIdSet){
+    	return this.selector.selectWithOpportuntiesByAccountId(accountIdSet);
     }
 
     public void consumeAccountArraysByNamesLike(TH_AccountArrayConsumerInterface consumer, String nameLikeness) {

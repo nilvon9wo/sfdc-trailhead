@@ -12,10 +12,23 @@ public class MOCK_OpportunityFactory {
 		return sObjectListBySObjectMap;
 	}
 	
+	public static Opportunity createWithAccount(fflib_SObjectUnitOfWork unitOfWork2, Account account){
+		Opportunity opportunity = new Opportunity (
+			name = account.Name + ' Opportunity ',
+			accountId = account.id,
+			stageName = 'Prospecting',
+			type = 'New Customer',
+			closeDate = System.today().addMonths(1)
+		);
+		unitOfWork2.registerNew(opportunity);
+		return opportunity;	
+	}
+
 	private static Opportunity create(Integer i){
 		Opportunity opportunity = new Opportunity (
 			name = 'Opportunity ' + i,
 			stageName = 'Open',
+			type = 'New Customer',
 			closeDate = System.today()
 		);
 		unitOfWork.registerNew(opportunity);				

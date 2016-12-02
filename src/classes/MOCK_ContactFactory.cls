@@ -13,6 +13,12 @@ public class MOCK_ContactFactory {
 		return contactList;
 	} 
 	
+	public static Contact create(fflib_SObjectUnitOfWork unitOfWork, String lastName) {
+		Contact contact = create(lastName, 'Education', DAO_Timing.LATER);
+		unitOfWork.registerNew(contact);
+		return contact;
+	}
+
 	public static Contact create(fflib_SObjectUnitOfWork unitOfWork, Integer i) {
 		Contact contact = create('Rosberg', 'Education', DAO_Timing.LATER);
 		unitOfWork.registerNew(contact);

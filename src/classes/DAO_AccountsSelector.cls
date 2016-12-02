@@ -41,7 +41,7 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
                 newQueryFactory()
                         .setCondition('name = :accountName')
                         .toSOQL()
-        );
+        ); 
     }
 
     public virtual List<Account> selectWithContactsByExactName (String accountName) {
@@ -51,6 +51,16 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
 
         return (List<Account>) Database.query(
                 accountQueryFactory.setCondition('name = :accountName').toSOQL()
+        );
+    }
+
+    public virtual List<Account> selectWithOpportuntiesByAccountId(Set<Id> idSet) {
+        fflib_QueryFactory accountQueryFactory = newQueryFactory();
+        fflib_QueryFactory opportunitiesQueryFactory = new DAO_OpportunitiesSelector()
+                .addQueryFactorySubselect(accountQueryFactory);
+
+        return (List<Account>) Database.query(
+                accountQueryFactory.setCondition('id IN :idSet').toSOQL()
         );
     }
 

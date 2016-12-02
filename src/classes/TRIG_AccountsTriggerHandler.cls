@@ -31,12 +31,16 @@ public class TRIG_AccountsTriggerHandler extends fflib_SObjectDomain {
     public override void onBeforeInsert() {
     	accounts.setShippingStateToBillingState(this.accountList); 
     }
-
+    
     public override void onAfterInsert() {
     	accounts.createNewOpportunities(this.accountList); 
     }
 
     public override void onBeforeUpdate(Map<Id,SObject> existingAccountMap) {
     	accounts.setAnnualRevenueFromDescriptonMutation((Map<Id,Account>)existingAccountMap, (List<Account>) Records);
+    } 
+    
+    public override void onBeforeDelete() {
+    	accounts.preventDeletionOfAccountsWithOpportunities();
     }
 }

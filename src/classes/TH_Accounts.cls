@@ -1,16 +1,25 @@
 public class TH_Accounts  {
-	private fflib_SObjectUnitOfWork unitOfWork;
-	private DAO_OpportunitiesDao opportunitiesdao;
-	private List<Account> accountList; 
+	public static final String CANNOT_DELETE_WITN_OPPORTUNITIES = 'Cannot delete account with related opportunities'; 
 
-	public TH_Accounts(List<Account> accountList, fflib_SObjectUnitOfWork unitOfWork, DAO_OpportunitiesDao opportunitiesdao) {
+	private fflib_SObjectUnitOfWork unitOfWork;
+	private DAO_opportunitiesDao opportunitiesDao;
+	private List<Account> accountList;
+	private DAO_AccountDao accountDao;
+
+	public TH_Accounts(
+						List<Account> accountList, 
+						fflib_SObjectUnitOfWork unitOfWork, 
+						DAO_accountDao accountDao, 
+						DAO_opportunitiesDao opportunitiesDao
+					) {
 		this.accountList = accountList;
 		this.unitOfWork = unitOfWork;
-		this.opportunitiesdao = opportunitiesdao;
+		this.accountDao = accountDao;
+		this.opportunitiesDao = opportunitiesDao;
 	}
 
 	public TH_Accounts(List<Account> accountList, fflib_SObjectUnitOfWork unitOfWork) {
-		this(accountList, unitOfWork, new DAO_OpportunitiesDao());
+		this(accountList, unitOfWork, new DAO_accountDao(), new DAO_opportunitiesDao());
 	}
 	
 	// ----------------------------------------------------------------------------------
@@ -37,7 +46,7 @@ public class TH_Accounts  {
 			}
 			
 		}
-		return this;
+		return this; 
 	}
 	
 	public TH_Accounts setShippingStateToBillingState(List<Account> accountList){
@@ -73,6 +82,17 @@ public class TH_Accounts  {
 		for (Account account : accountList) {
 			account.description = 'Last Opportunity Raised ' + System.today();
 			unitOfWork.registerDirty(account);
+		}
+		return this;
+	}
+
+	// ----------------------------------------------------------------------------------
+
+	public TH_Accounts preventDeletionOfAccountsWithOpportunities() {
+		Map<Id, Account> accountsByIdMap = new Map<Id, Account>(this.accountList);
+		Set<Id> accountIdSet = (accountsByIdMap).keySet(); 
+		for (Account account : this.accountDao.getWithOpportuntiesByAccountId(accountIdSet)) {   
+			accountsByIdMap.get(account.id).addError(CANNOT_DELETE_WITN_OPPORTUNITIES);		
 		}
 		return this;
 	}
