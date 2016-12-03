@@ -1,0 +1,13 @@
+<apex:page controller="TH_ExchangeRateVFController" action="{!init}">
+    <apex:outputText label="Your favourite currency" value="{!$Cache.Session.local.CurrencyCache.FavouriteCurrencyRate}"/>
+    <apex:outputText label="Your number list size" value="{!$Cache.Session.local.CurrencyCache.numbersList.size}"/>
+    <apex:outputText label="Your cached data" value="{!$Cache.Session.local.CurrencyCache.myData.value}"/>
+
+    <apex:pageBlock title="Rates">
+        <apex:pageBlockTable value="{!Rates}" var="rate">
+            <apex:column value="{!rate.BaseCurrency__c}" />
+            <apex:column value="{!rate.ToCurrency__c}" />
+            <apex:column value="{!rate.Rate__c}" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
