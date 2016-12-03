@@ -60,7 +60,9 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
                 .addQueryFactorySubselect(accountQueryFactory);
 
         return (List<Account>) Database.query(
-                accountQueryFactory.setCondition('id IN :idSet').toSOQL()
+                accountQueryFactory
+                .setCondition('id IN (SELECT accountId FROM Opportunity) AND id IN :idSet')
+                .toSOQL()
         );
     }
 

@@ -11,10 +11,14 @@ public class MOCK_OpportunityFactory {
 		unitOfWork.commitWork(insertMode);
 		return sObjectListBySObjectMap;
 	}
-	
+
 	public static Opportunity createWithAccount(fflib_SObjectUnitOfWork unitOfWork2, Account account){
+		return createWithAccount(unitOfWork2, account, 1); 
+	}
+	
+	public static Opportunity createWithAccount(fflib_SObjectUnitOfWork unitOfWork2, Account account, Integer i){
 		Opportunity opportunity = new Opportunity (
-			name = account.Name + ' Opportunity ',
+			name = account.Name + ' Opportunity ' + i,
 			accountId = account.id,
 			stageName = 'Prospecting',
 			type = 'New Customer',
@@ -45,7 +49,7 @@ public class MOCK_OpportunityFactory {
 		PricebookEntry pricebookEntry = MOCK_PricebookEntryFactory.create(unitOfWork, product);
 		OpportunityLineItem opportunityLineItem = MOCK_OpportunityLineItemFactory.create(unitOfWork, opportunity, pricebookEntry);
 
-		sObjectListBySObjectMap.get(Opportunity.getSObjectType()).add(product);
+		sObjectListBySObjectMap.get(Product2.getSObjectType()).add(product);
 		sObjectListBySObjectMap.get(PricebookEntry.getSObjectType()).add(pricebookEntry);
 		sObjectListBySObjectMap.get(OpportunityLineItem.getSObjectType()).add(opportunityLineItem);
 		return sObjectListBySObjectMap;

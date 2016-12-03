@@ -91,7 +91,9 @@ public class TH_Accounts  {
 	public TH_Accounts preventDeletionOfAccountsWithOpportunities() {
 		Map<Id, Account> accountsByIdMap = new Map<Id, Account>(this.accountList);
 		Set<Id> accountIdSet = (accountsByIdMap).keySet(); 
-		for (Account account : this.accountDao.getWithOpportuntiesByAccountId(accountIdSet)) {   
+		List<Account> accountsWithOpportunities = this.accountDao.getWithOpportuntiesByAccountId(accountIdSet); 
+		
+		for (Account account : accountsWithOpportunities) {
 			accountsByIdMap.get(account.id).addError(CANNOT_DELETE_WITN_OPPORTUNITIES);		
 		}
 		return this;

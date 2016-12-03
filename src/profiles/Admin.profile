@@ -231,6 +231,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_AccountDeletionTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_AccountFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -291,7 +295,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_ContactRestrictByNameTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_ContactUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_Contacts</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -300,6 +312,22 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_ContactsFutureWebCalloutService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_CurrencyExchange</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_CurrencyExchangeAPIWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_DateVerifier</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_DateVerifierTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -407,6 +435,22 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_TaskUtil</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_TaskUtilTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_TemperatureConverter</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_TemperatureConverterTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_UnitOfWorkTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -416,6 +460,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TRIG_AccountsTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TRIG_ContactsTriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -2086,6 +2134,10 @@
     </objectPermissions>
     <pageAccesses>
         <apexPage>TH_ContactEnterData</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>TH_CurrencyExchange</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <recordTypeVisibilities>
