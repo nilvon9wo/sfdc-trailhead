@@ -255,6 +255,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_BusScheduleCache</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_CaseCloseResource</apexClass>
         <enabled>true</enabled>
     </classAccesses>
