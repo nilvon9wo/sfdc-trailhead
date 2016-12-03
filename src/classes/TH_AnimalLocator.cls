@@ -8,6 +8,8 @@ public class TH_AnimalLocator {
 		TH_AnimalLocatorStrategy callout = new TH_AnimalLocatorStrategy(); 
 		callout.targetId = animalId;
 		callout.execute();
-		return callout.animal.name;  
+		return (callout.animal != null) 
+			? callout.animal.name
+			: null;
     }   
 }
