@@ -1,0 +1,5 @@
+<apex:page >
+    <apex:outputText value="{!$Cache.Session.local.CurrencyCache.FavouriteCurrencyRate}"/>
+    <apex:outputText value="{!$Cache.Session.local.CurrencyCache.numbersList.size}"/>
+    <apex:outputText value="{!$Cache.Session.local.CurrencyCache.myData.value}"/>
+</apex:page>
