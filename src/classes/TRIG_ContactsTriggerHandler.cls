@@ -22,6 +22,12 @@ public class TRIG_ContactsTriggerHandler extends fflib_SObjectDomain {
 			return new TRIG_ContactsTriggerHandler (contactList);
 		}
 	}
+	
+	// ---------------------------------------
+
+    public override void onAfterInsert() {
+    	contacts.sendMail(); 
+    }
 
     public override void onValidate() {
     	contacts.restrictContactByName(); 

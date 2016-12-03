@@ -54,17 +54,31 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
         );
     }
 
-    public virtual List<Account> selectWithOpportuntiesByAccountId(Set<Id> idSet) {
+    public virtual List<Account> selectWithOpportuntiesByAccountId(Set<Id> accountId) {
         fflib_QueryFactory accountQueryFactory = newQueryFactory();
         fflib_QueryFactory opportunitiesQueryFactory = new DAO_OpportunitiesSelector()
                 .addQueryFactorySubselect(accountQueryFactory);
 
         return (List<Account>) Database.query(
                 accountQueryFactory
-                .setCondition('id IN (SELECT accountId FROM Opportunity) AND id IN :idSet')
+                .setCondition('id IN :idSet' 
+                		+ ' AND id IN (SELECT accountId FROM Opportunity)'
+                	)
                 .toSOQL()
         );
     }
+
+    public virtual List<Account> selectThoseWithoutOpportuntiesByAccountId(Set<Id> idSet) {
+        fflib_QueryFactory accountQueryFactory = newQueryFactory();
+        return (List<Account>) Database.query(
+                accountQueryFactory
+                .setCondition('id IN :idSet' 
+                		+ ' AND id NOT IN (SELECT accountId FROM Opportunity)'
+                	)
+                .toSOQL()
+        );
+    }
+
 
     public List<Account> selectByNameLikeness(String nameLikeness) {
         return (List<Account>) Database.query(

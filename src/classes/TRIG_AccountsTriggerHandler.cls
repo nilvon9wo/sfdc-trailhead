@@ -1,20 +1,23 @@
 public class TRIG_AccountsTriggerHandler extends fflib_SObjectDomain {
 	static fflib_SObjectUnitOfWork unitOfWork = new fflib_SObjectUnitOfWork( 
 		new Schema.SObjectType[]{ 
-			Account.SObjectType
+			Account.SObjectType,
+			Opportunity.SObjectType
 		} 
 	);
 	List<Account> accountList;
 	TH_Accounts accounts;
+	LOG_Logger logger;
 	
-	public TRIG_AccountsTriggerHandler(List<Account> accountList, TH_Accounts accounts) {
+	public TRIG_AccountsTriggerHandler(List<Account> accountList, TH_Accounts accounts, LOG_Logger logger) {
 		super(accountList);
 		this.accountList = accountList;
 		this.accounts = accounts;
+		this.logger = logger;
 	}
  
 	public TRIG_AccountsTriggerHandler(List<Account> accountList) {
-		this(accountList, new TH_Accounts(accountList, unitOfWork));
+		this(accountList, new TH_Accounts(accountList, unitOfWork), new LOG_Logger());
 	}
 	
 	public class Constructor implements fflib_SObjectDomain.IConstructable {
@@ -23,23 +26,39 @@ public class TRIG_AccountsTriggerHandler extends fflib_SObjectDomain {
 		}
 	}
 	
+	// ------------------------------------------------------------------------------
+	
 	public override void onApplyDefaults() {
-		accounts.setDefaultDescription((List<Account>) Records);
-		
+		accounts.setDefaultDescription();
 	}
 
     public override void onBeforeInsert() {
-    	accounts.setShippingStateToBillingState(this.accountList); 
+    	logger.info('Hello World');
+    	
+    	accounts.setDefaultDescription()
+    		.matchShippingToBilling();
+    	
+    	//TH_HypotheticalCalloutService.makeCallout(); 
     }
     
     public override void onAfterInsert() {
-    	accounts.createNewOpportunities(this.accountList); 
+    	accounts.createNewOpportunities(); 
     }
 
     public override void onBeforeUpdate(Map<Id,SObject> existingAccountMap) {
-    	accounts.setAnnualRevenueFromDescriptonMutation((Map<Id,Account>)existingAccountMap, (List<Account>) Records);
+    	accounts.matchShippingToBilling()
+    	    	.setAnnualRevenueFromDescriptonMutation((Map<Id,Account>)existingAccountMap);
+    	
+    	//TH_HypotheticalCalloutService.makeCallout();
     } 
     
+    public override void onAfterUpdate(Map<Id,SObject> existingAccountMap) {
+    	accounts.createNewOpportunities()
+    		.updateExistingOpportunityDescriptions(); 
+    		
+		unitOfWork.commitWork();    		 
+    }
+
     public override void onBeforeDelete() {
     	accounts.preventDeletionOfAccountsWithOpportunities();
     }

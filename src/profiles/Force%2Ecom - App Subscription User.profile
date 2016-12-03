@@ -147,6 +147,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DAO_UnitOfWork</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DTO_OpportunityInfo</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -355,6 +359,22 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_ExchangeRateDao</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_ExchangeRateVFController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_ExchangeRateWebServiceWrapper</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_ExchangeRateWebServiceWrapperTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_GenericSObjectWorker</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -364,6 +384,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_HelloWorld</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_HypotheticalCalloutService</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -1384,6 +1408,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>ExchangeRate__c.forList__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Idea.Attachment</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1867,6 +1896,9 @@
         <layout>Event-Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>ExchangeRate__c-Exchange Rate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>FeedItem-Feed Item Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -2015,7 +2047,7 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>TH_CurrencyExchange</apexPage>
+        <apexPage>TH_ExchangeRates</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <recordTypeVisibilities>

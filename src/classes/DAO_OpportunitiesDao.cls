@@ -16,6 +16,15 @@ public virtual class DAO_OpportunitiesDao {
 	
 	public virtual List<Opportunity> getByIds (List<Id> idList) {
 		return this.selector.selectById(idList); 
+	} 
+
+	public virtual List<Opportunity> getByAccountIds (Set<Id> accountIdSet) {
+		return this.selector.selectByAccountIds(accountIdSet); 
+	}
+
+	public virtual List<Opportunity> getByAccountIds (List<Account> accountIdList) {
+		Set<Id> accountIdSet = (new Map<Id, Account>(accountIdList)).keySet();
+		return this.selector.selectByAccountIds(accountIdSet); 
 	}
 	
 	public virtual void tryUpdate(fflib_SObjectUnitOfWork unitOfWork){

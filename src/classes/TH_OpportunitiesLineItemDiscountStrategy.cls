@@ -1,11 +1,11 @@
 public class TH_OpportunitiesLineItemDiscountStrategy extends UTIL_IfPopulatedListStrategy { 
-	fflib_SObjectUnitOfWork unitOfWork; 
+	DAO_UnitOfWork unitOfWork; 
 	Opportunity opportunity;
 	Decimal discountFactor;
 	List<Decimal> discountList; 
 	
 	public TH_OpportunitiesLineItemDiscountStrategy(
-			fflib_SObjectUnitOfWork unitOfWork, 
+			DAO_UnitOfWork unitOfWork, 
 			Opportunity opportunity, 
 			Decimal discountFactor,
 			List<Decimal> discountList 
@@ -18,12 +18,12 @@ public class TH_OpportunitiesLineItemDiscountStrategy extends UTIL_IfPopulatedLi
 	 
 	public void doIfPopulated(List<Object> opportunityLineItemList){
 		TH_OpportunityLineItems lineItems = new TH_OpportunityLineItems((List<OpportunityLineItem>) opportunityLineItemList);  
-		lineItems.applyDiscount(this.discountFactor, this.discountList, unitOfWork);							 	
+		lineItems.applyDiscount(this.discountFactor, this.discountList, unitOfWork);		 					 	
 	}	
 		
 	public void doIfEmpty(){
 		this.opportunity.amount = opportunity.amount * discountFactor;
 		this.discountList.add(this.opportunity.amount);
-		unitOfWork.registerDirty(opportunity);
+		unitOfWork.register(opportunity);
 	}
 }

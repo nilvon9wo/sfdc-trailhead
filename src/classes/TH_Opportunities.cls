@@ -1,5 +1,5 @@
 public class TH_Opportunities {
-	fflib_SObjectUnitOfWork unitOfWork;
+	DAO_UnitOfWork unitOfWork;
 	List<Opportunity> opportunityList; 
 	Map<Id, Decimal> discountPercentageByOpportunityId;
 	DAO_AccountDao accountDao;
@@ -13,21 +13,28 @@ public class TH_Opportunities {
 		this.opportunityList = opportunityList; 
 		this.discountPercentageByOpportunityId = discountPercentageByOpportunityId;
 		this.accountDao = accountDao;
-		this.unitOfWork = unitOfWork;
+		this.unitOfWork = new DAO_UnitOfWork(unitOfWork);
 	}
 
 	public TH_Opportunities(List<Opportunity> opportunityList, fflib_SObjectUnitOfWork unitOfWork) {
-		this(opportunityList, unitOfWork, TH_OpportunitiesDefaultDiscounter.getDefaultDiscountMap(opportunityList), new DAO_AccountDao());
+		this(
+			opportunityList, 
+			unitOfWork, 
+			TH_OpportunitiesDefaultDiscounter.getDefaultDiscountMap(opportunityList), 
+			new DAO_AccountDao()
+		);
 	}
+	
+	// ---------------------------------------------------------------------------------------
 
-	public TH_Opportunities setDefaultDiscountTypes(List<Opportunity> opportunityList){
-		for (Opportunity opportunity : opportunityList) {
+	public TH_Opportunities setDefaultDiscountTypes(){
+		for (Opportunity opportunity : this.opportunityList) {
 			if (opportunity.discountType__c == null) {
 				opportunity.discountType__c = Opportunity_Settings__c.getInstance().discount_type__c;
 				if (opportunity.id != null){
-					unitOfWork.registerDirty(opportunity);
+					unitOfWork.register(opportunity);
 				} else {
-					unitOfWork.registerNew(opportunity);
+					unitOfWork.register(opportunity);
 				}
 			}
 		}
@@ -41,15 +48,15 @@ public class TH_Opportunities {
 			
 			TH_OpportunitiesLineItemDiscountStrategy discountStrategy = 
 				new TH_OpportunitiesLineItemDiscountStrategy(this.unitOfWork, opportunity, factor, discountList);
-					
-			discountStrategy.execute(opportunity.opportunityLineItems);
-		}
+					 
+			discountStrategy.execute(opportunity.opportunityLineItems); 
+		} 
 		return this;  
 	}
 
-	public TH_Opportunities updateOpportunityActivity(List<Opportunity> opportunityList){
+	public TH_Opportunities updateOpportunityActivity(){ 
 		List<Id> accountIdList = new List<Id>();
-		for (Opportunity opportunity : opportunityList) {
+		for (Opportunity opportunity : this.opportunityList) {
 			if (opportunity.accountId != null) {
 				accountIdList.add(opportunity.accountId);
 			}
@@ -58,5 +65,22 @@ public class TH_Opportunities {
 		TH_Accounts accounts = new TH_Accounts(accountDao.getByIds(accountIdList), unitOfWork);  
 		accounts.updateOpportunityActivity();
 		return this;
+	}
+	
+	// ------------------------------------------------------------------------------
+	
+	public TH_Opportunities createWonFollowUpTask(){
+		List <Task> newTaskList = new List<Task>();
+		for(Opportunity opportunity : this.opportunityList) {
+			if (opportunity.stageName == 'Closed Won') {
+				Task task = new Task (
+					subject = 'Follow Up Test Task',
+					whatId = opportunity.id
+				);
+				newTaskList.add(task);
+			}
+		}
+		insert newTaskList;
+		return this;		
 	}
 }

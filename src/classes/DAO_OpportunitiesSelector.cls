@@ -22,23 +22,21 @@ public class DAO_OpportunitiesSelector extends fflib_SObjectSelector {
     }
 
     public List<Opportunity> selectById(Set<Id> idSet) {
-        String query = String.format(
-                'SELECT {0} ' +
-                        'FROM {1}, ' +
-                        '(SELECT unitPrice FROM OpportunityLineItems) ' +
-                        'WHERE SystemModStamp = LAST_N_DAYS:30 ' +
-                        'ORDER BY {2} ',
-                new List<String>{
-                        getFieldListString(),
-                        getSObjectName(),
-                        getOrderBy()
-                }
-        );
-        return (List<Opportunity>) Database.query(query);
+        return (List<Opportunity>) selectSObjectsById(idSet);
     }
-
+    
     public List<Opportunity> selectById(List<Id> idList) {
         return this.selectById(new Set<Id>(idList));
+    }
+
+    public List<Opportunity> selectByIdWithOpportunityLineItems (Set<Id> idSet) {
+        fflib_QueryFactory opportunitiesQueryFactory = newQueryFactory();
+        fflib_QueryFactory lineItemsQueryFactory = new DAO_OpportunityLineItemsSelector()
+                .addQueryFactorySubselect(opportunitiesQueryFactory);
+
+        return (List<Opportunity>) Database.query(
+                opportunitiesQueryFactory.setCondition('id IN :idSet').toSOQL()
+        );
     }
 
     public List<Opportunity> selectByIdWithProducts(Set<Id> idSet) {
@@ -46,13 +44,20 @@ public class DAO_OpportunitiesSelector extends fflib_SObjectSelector {
         fflib_QueryFactory lineItemsQueryFactory = new DAO_OpportunityLineItemsSelector()
                 .addQueryFactorySubselect(opportunitiesQueryFactory);
 
-
         new DAO_PricebookEntriesSelector().configureQueryFactoryFields(lineItemsQueryFactory, 'PricebookEntry');
         new DAO_ProductsSelector().configureQueryFactoryFields(lineItemsQueryFactory, 'PricebookEntry.Product2');
         new DAO_PricebooksSelector().configureQueryFactoryFields(lineItemsQueryFactory, 'PricebookEntry.Pricebook2');
 
         return (List<Opportunity>) Database.query(
                 opportunitiesQueryFactory.setCondition('id IN :idSet').toSOQL()
+        );
+    }  
+
+    public List<Opportunity> selectByAccountIds(Set<Id> accountIdSet) {
+        return (List<Opportunity>) Database.query(
+                newQueryFactory()
+                        .setCondition('accountId IN :accountIdSet')
+                        .toSOQL()
         );
     }
 

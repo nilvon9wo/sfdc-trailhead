@@ -50,6 +50,20 @@ public virtual class DAO_AccountDao {
     	return this.selector.selectWithOpportuntiesByAccountId(accountIdSet);
     }
 
+    public virtual List<Account> getWithOpportuntiesByAccountId(List<Account> accountList){
+		Map<Id, Account> accountsByIdMap = new Map<Id, Account>(accountList);
+    	return this.selector.selectWithOpportuntiesByAccountId(accountsByIdMap.keySet());
+    }
+
+    public virtual List<Account> getThoseWithoutOpportuntiesByAccountId(Set<Id> accountIdSet){
+    	return this.selector.selectThoseWithoutOpportuntiesByAccountId(accountIdSet);
+    }
+
+	public virtual List<Account> getThoseWithoutOpportuntiesByAccountId(List<Account> accountList){
+		Map<Id, Account> accountsByIdMap = new Map<Id, Account>(accountList);
+    	return this.selector.selectThoseWithoutOpportuntiesByAccountId(accountsByIdMap.keySet());
+    }
+
     public void consumeAccountArraysByNamesLike(TH_AccountArrayConsumerInterface consumer, String nameLikeness) {
         // TODO: Move this selection into the selector.
         for (Account[] accountArray : [SELECT id FROM Account WHERE name LIKE:nameLikeness]) {
