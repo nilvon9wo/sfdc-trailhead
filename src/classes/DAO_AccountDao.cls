@@ -34,6 +34,10 @@ public virtual class DAO_AccountDao {
         return this.selector.selectByExactName(name);
     }
 
+    public virtual List<Account> getWithContactsByAccountIds(Set<Id> idSet) {
+        return this.selector.selectWithContactsByAccountIds(idSet); 
+    }
+
     public virtual List<Account> getWithContactByAccountName(String name) {
         return this.selector.selectWithContactsByExactName(name);
     }

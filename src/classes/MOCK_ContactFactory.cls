@@ -36,6 +36,13 @@ public class MOCK_ContactFactory {
 		return contact;
 	}
 
+	public static Contact createWithAccount(fflib_SObjectUnitOfWork unitOfWork2, Account account, Integer i){
+		Contact contact = create('Contact-' + i, defaultDepartment, DAO_Timing.LATER);
+		System.debug('###### cWA contact: ' + contact);			
+		unitOfWork2.registerNew(contact);
+		return contact;
+	}
+
 	public static Contact create(fflib_SObjectUnitOfWork unitOfWork, Integer i) {
 		Contact contact = create('Rosberg', defaultDepartment, DAO_Timing.LATER);
 		unitOfWork.registerNew(contact);
@@ -49,7 +56,7 @@ public class MOCK_ContactFactory {
 	} 
 
 	public static Contact create(String lastName, String department, Boolean insertNow) {
-		String firstName = 'Test ' + testContactCount;
+		String firstName = 'Test';
 		String email = firstName + '.' + lastName + testContactCount++ + '@example.com';
 		String description = 'Contact of ' + datetime.now();
 		
@@ -66,5 +73,5 @@ public class MOCK_ContactFactory {
 		}
 
 		return contact;
-	} 
+	}
 }

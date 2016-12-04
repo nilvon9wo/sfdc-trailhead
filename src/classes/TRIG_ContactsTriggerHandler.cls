@@ -26,7 +26,9 @@ public class TRIG_ContactsTriggerHandler extends fflib_SObjectDomain {
 	// ---------------------------------------
 
     public override void onAfterInsert() {
-    	contacts.sendMail(); 
+    	if (!(System.Test.isRunningTest())) {
+    		contacts.sendMail();
+    	}
     }
 
     public override void onValidate() {

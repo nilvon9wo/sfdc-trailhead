@@ -17,6 +17,7 @@ public class UTIL_MapIdentifierHelper
 
 		if (currentSObject.getSObjectType() == Account.SObjectType)     		{ return create ((Account)  		  currentSobject); }
 		if (currentSObject.getSObjectType() == Attachment.SObjectType)     		{ return create ((Attachment) 		  currentSobject); }
+		if (currentSObject.getSObjectType() == Case.SObjectType)     		    { return create ((Case)     		  currentSobject); }
 		if (currentSObject.getSObjectType() == Contact.SObjectType)     		{ return create ((Contact) 		  	  currentSobject); }
 		if (currentSObject.getSObjectType() == Document.SObjectType)     		{ return create ((Document)		  	  currentSobject); }
 		if (currentSObject.getSObjectType() == Opportunity.SObjectType)     	{ return create ((Opportunity)		  currentSobject); }
@@ -28,6 +29,7 @@ public class UTIL_MapIdentifierHelper
 	public static String create (SObject currentSobject) { return create (currentSobject, true); }
 	public static String create (Account    account)     { return 'Account' + concatenate(account, new List<String>{ 'name' });  			}
 	public static String create (Attachment attachment)  { return 'Attachment' + concatenate(attachment, new List<String>{ 'name', 'parentId'});  			}
+	public static String create (Case       currentCase) { return 'Case' + concatenate(currentCase, new List<String>{ 'subject', 'priority', 'origin'});  			}
 	public static String create (Contact    contact)	 { return 'Contact'    + concatenate(contact, new List<String>{ 'lastName', 'firstName', 'email'}); }
 	public static String create (Document   document)	 { return 'Document'   + concatenate(document,   new List<String>{ 'name', 'contentType', 'type', 'folderId'}); }
 	public static String create (Opportunity opportunity){ return 'Opportunity'+ concatenate(opportunity, new List<String>{ 'name', 'type', 'accountId'}); }
