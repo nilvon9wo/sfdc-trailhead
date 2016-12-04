@@ -20,6 +20,10 @@ It should not be mistaken for production quality code.
 3. Building solutions around low-quality code because those parts of the problem don't interest me ("lava flow").
 4. Duplicate code.
 5. Inconsistent interfaces.
+6. "Unit of Work" is creating more problems than it is solving through inconsistent and mis- use.
+7. Tests are sometimes over-complicated or over-specified.
+8. Tests are often at questionable levels, either testing private methods or integration.
+9. Mock factories are too complicated.
 
 
  
