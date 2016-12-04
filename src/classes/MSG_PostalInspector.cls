@@ -12,15 +12,17 @@ public virtual class MSG_PostalInspector {
 	public virtual Boolean inspect(Messaging.SendEmailResult[] emailResultArray, Boolean failFast) {
 		Boolean sendResult = true;
 		
-		for (Messaging.SendEmailResult result: emailResultArray) {
-			if (result.isSuccess()) {
-				this.logger.info('Email sent successfully.');
-			}
-			else {
-				sendResult = false;
-				this.logger.error('The following errors occurred: ' + result.getErrors());
-				if (failFast) {
-					return false;
+		if (emailResultArray != null) {
+			for (Messaging.SendEmailResult result: emailResultArray) {
+				if (result.isSuccess()) {
+					this.logger.info('Email sent successfully.');
+				}
+				else {
+					sendResult = false;
+					this.logger.error('The following errors occurred: ' + result.getErrors());
+					if (failFast) {
+						return false;
+					}
 				}
 			}
 		}

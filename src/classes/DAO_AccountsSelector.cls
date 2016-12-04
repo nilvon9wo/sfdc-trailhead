@@ -2,7 +2,12 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
 
     public List<Schema.SObjectField> getSObjectFieldList() {
         return new List<Schema.SObjectField>{
+                Account.id,
                 Account.annualRevenue,
+                Account.billingCity,
+                Account.billingPostalCode,
+                Account.billingState,
+                Account.billingStreet,
                 Account.description,
                 Account.id,
                 Account.name,
@@ -45,25 +50,29 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
     }
 
     public virtual List<Account> selectWithContactsByAccountIds (Set<Id> idSet) {
-        fflib_QueryFactory accountQueryFactory = newQueryFactory();
-        fflib_QueryFactory contactQueryFactory = new DAO_ContactSelector()
-                .addQueryFactorySubselect(accountQueryFactory);
-
         return (List<Account>) Database.query(
-                accountQueryFactory.setCondition('id IN :idSet').toSOQL()
+                getAccountWithContactQueryFactory()
+                .setCondition('id IN :idSet')
+                .toSOQL()
         );
     }
 
     public virtual List<Account> selectWithContactsByExactName (String accountName) {
-        fflib_QueryFactory accountQueryFactory = newQueryFactory();
-        fflib_QueryFactory contactQueryFactory = new DAO_ContactSelector()
-                .addQueryFactorySubselect(accountQueryFactory);
-
         return (List<Account>) Database.query(
-                accountQueryFactory.setCondition('name = :accountName').toSOQL()
+                getAccountWithContactQueryFactory()
+                .setCondition('name = :accountName')
+                .toSOQL()
         );
     }
-
+    
+    public virtual Database.QueryLocator selectLocatorWithContactsByBillingCountry(String country) {
+        return Database.getQueryLocator(
+                getAccountWithContactQueryFactory()
+                .setCondition('billingCountry = :country')
+                .toSOQL()
+        );
+    }
+    
     public virtual List<Account> selectWithOpportuntiesByAccountId(Set<Id> accountId) {
         fflib_QueryFactory accountQueryFactory = newQueryFactory();
         fflib_QueryFactory opportunitiesQueryFactory = new DAO_OpportunitiesSelector()
@@ -105,5 +114,13 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
                         .toSOQL()
         );
 	}
-    
+	
+	// -----------------------------------------------------------------------
+	
+	 private virtual fflib_QueryFactory getAccountWithContactQueryFactory() {
+        fflib_QueryFactory accountQueryFactory = newQueryFactory();
+        fflib_QueryFactory contactQueryFactory = new DAO_ContactSelector()
+                .addQueryFactorySubselect(accountQueryFactory);
+        return accountQueryFactory;
+    }
 }

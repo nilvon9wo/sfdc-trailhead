@@ -5,7 +5,11 @@ public class DAO_ContactSelector extends fflib_SObjectSelector {
                 Contact.id,
                 Contact.email,
                 Contact.firstName,
-                Contact.lastName
+                Contact.lastName,
+                Contact.mailingCity,
+                Contact.mailingPostalCode,
+                Contact.mailingState,
+                Contact.mailingStreet
         };
     }
 

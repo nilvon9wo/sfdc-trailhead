@@ -58,6 +58,10 @@ public virtual class DAO_AccountDao {
         return new Map<Id, Account>(this.selector.selectById(accountIdList));
     }
     
+    public virtual Database.QueryLocator getLocatorWithContactsByBillingCountry(String country) {
+        return this.selector.selectLocatorWithContactsByBillingCountry(country);
+    }
+    
     public virtual List<Account> getWithOpportuntiesByAccountId(Set<Id> accountIdSet){
     	return this.selector.selectWithOpportuntiesByAccountId(accountIdSet);
     }
