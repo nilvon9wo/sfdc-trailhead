@@ -1,5 +1,5 @@
 @isTest
-private class AccountManagerTest {
+private class TH_AccountManagerRestResourceTest {
 	private static final User TestRunner = TEST_RunAsUserFactory.create();
 	private static final String baseUri = 'https://eu11.salesforce.com/services/apexrest/Accounts/'; 
 	
@@ -19,7 +19,7 @@ private class AccountManagerTest {
         System.runAs(TestRunner){ 
             Test.startTest();
             {
-           		resultAccount = AccountManager.getAccount(); 
+           		resultAccount = TH_AccountManagerRestResource.getAccount(); 
             }
             Test.stopTest();
         }

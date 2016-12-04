@@ -1,18 +1,18 @@
-@RestResource(urlMapping='/Accounts/*/contacts') 
-global class AccountManager {
+@RestResource(urlMapping='/Accounts/*/contacts')
+global class TH_AccountManagerRestResource {
 	DAO_AccountDao accountDao;
 	
-	AccountManager(DAO_AccountDao accountDao) {
+	TH_AccountManagerRestResource(DAO_AccountDao accountDao) {
 		this.accountDao = accountDao;
 	}
  
-	AccountManager() {
+	TH_AccountManagerRestResource() {
 		this(new DAO_AccountDao());
 	}
 	
 	@HttpGet
 	global static Account getAccount(){
-		AccountManager resource = new AccountManager();
+		TH_AccountManagerRestResource resource = new TH_AccountManagerRestResource();
 		return resource.getById(RestContext.request);		
 	}
 	

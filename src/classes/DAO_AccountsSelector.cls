@@ -49,19 +49,10 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
         fflib_QueryFactory contactQueryFactory = new DAO_ContactSelector()
                 .addQueryFactorySubselect(accountQueryFactory);
 
-		/*
         return (List<Account>) Database.query(
                 accountQueryFactory.setCondition('id IN :idSet').toSOQL()
         );
-        */
-        return [
-        	SELECT id, name, phone, annualRevenue, description,
-        		(SELECT id, firstName, lastName, email FROM Contacts)
-    		FROM Account
-    		WHERE id IN :idSet
-        ];
     }
-
 
     public virtual List<Account> selectWithContactsByExactName (String accountName) {
         fflib_QueryFactory accountQueryFactory = newQueryFactory();
