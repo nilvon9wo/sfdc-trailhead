@@ -1,5 +1,5 @@
 @isTest
-private class TH_TH_LeadProcessorBatchableTest {
+private class TH_LeadProcessorBatchableTest {
 	private static final User TestRunner = TEST_RunAsUserFactory.create(); 
 	private static final Boolean ATTACH_CONTACTS = TRUE;
 	private static final Boolean NO_ATTACHED_CONTACTS = FALSE;
@@ -14,7 +14,7 @@ private class TH_TH_LeadProcessorBatchableTest {
         System.runAs(TestRunner){
             Test.startTest();
             {
-             	TH_TH_LeadProcessorBatchable.countContacts(new List<Id>{testAccountId});
+             	TH_LeadProcessorBatchable.countContacts(new List<Id>{testAccountId});
             }
             Test.stopTest();
         }
@@ -28,7 +28,7 @@ private class TH_TH_LeadProcessorBatchableTest {
 
 	@isTest static void testUpdateCountContactsShouldCorrectlyUpdateNumberOfContacts(){
 		// Arrange
-		TH_TH_LeadProcessorBatchable processorUnderTest = new TH_TH_LeadProcessorBatchable();
+		TH_LeadProcessorBatchable processorUnderTest = new TH_LeadProcessorBatchable();
 		Integer testNumberOfContacts = 1;
 		Account testAccount = createTestAccounts(1, ATTACH_CONTACTS)[0];
 		Id testAccountId = testAccount.id;
@@ -53,7 +53,7 @@ private class TH_TH_LeadProcessorBatchableTest {
 
 	@isTest static void testSetCountContactsShouldCorrectlySetNumberOfContacts(){
 		// Arrange
-		TH_TH_LeadProcessorBatchable processorUnderTest = new TH_TH_LeadProcessorBatchable();
+		TH_LeadProcessorBatchable processorUnderTest = new TH_LeadProcessorBatchable();
 		Integer testNumberOfContacts = 1;
 		List<Account> testAccountList = createTestAccounts(1, ATTACH_CONTACTS);
 		

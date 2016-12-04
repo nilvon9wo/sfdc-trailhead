@@ -10,4 +10,4 @@ public class MOCK2_AccountFactory extends MOCK2_SObjectFactory {
 			super(template, quantity, 'Account ');
 		}
 	}
-} 
+}

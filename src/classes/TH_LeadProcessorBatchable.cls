@@ -1,19 +1,19 @@
-public class TH_TH_LeadProcessorBatchable {
+public class TH_LeadProcessorBatchable {
 	DAO_accountDao accountDao;
 	
-	public TH_TH_LeadProcessorBatchable(DAO_accountDao accountDao) {
+	public TH_LeadProcessorBatchable(DAO_accountDao accountDao) {
 		this.accountDao = accountDao;
 	}
 	
-	public TH_TH_LeadProcessorBatchable() {
+	public TH_LeadProcessorBatchable() {
 		this(new DAO_accountDao());
 	}
 	
 
 	@future()
 	public static void countContacts(List<Id> accountIdList) {
-		TH_TH_LeadProcessorBatchable TH_TH_LeadProcessorBatchable = new TH_TH_LeadProcessorBatchable();
-		TH_TH_LeadProcessorBatchable.updateContactCount(accountIdList);
+		TH_LeadProcessorBatchable TH_LeadProcessorBatchable = new TH_LeadProcessorBatchable();
+		TH_LeadProcessorBatchable.updateContactCount(accountIdList);
 	}
 	
 	@testVisible() 

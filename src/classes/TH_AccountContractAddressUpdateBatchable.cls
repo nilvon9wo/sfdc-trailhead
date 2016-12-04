@@ -26,25 +26,17 @@ global class TH_AccountContractAddressUpdateBatchable implements Database.Batcha
 	}
 
     global Database.QueryLocator start(Database.BatchableContext bc) {
-        //return accountDao.getLocatorWithContactsByBillingCountry('USA');
-        Database.queryLocator locator = Database.getQueryLocator(
+        return Database.getQueryLocator(
             'SELECT ID, BillingStreet, BillingCity, BillingState, BillingPostalCode, ' +
             	'(SELECT ID, MailingStreet, MailingCity, MailingState, MailingPostalCode FROM Contacts) '+
             'FROM Account ' +
             'WHERE BillingCountry = \'USA\''
         );
-        console.log('locator', locator);
-        return locator;
     }
 
     global void execute(Database.BatchableContext bc, List<Account> accountList){
-    	System.debug('############ HELLO!!!!');
-    	console.log('BatchableContext', bc);
-    	console.log('accountList', accountList);
-    	
     	List<Contact> contactList = new List<Contact>();
     	for (Account account : accountList) {
-	    	console.log('account', account);
     		for (Contact contact : account.contacts) {
     			console.log('BEFORE', contact);
     			contact.MailingStreet = account.BillingStreet;
@@ -56,9 +48,7 @@ global class TH_AccountContractAddressUpdateBatchable implements Database.Batcha
     			recordsProcessed++;
     		}
     	}
-    	console.log('recordsProcessed', recordsProcessed);
-    	UTIL_ResultListWrapper result = contactDao.doUpdate(contactList);
-    	console.log('doUpdate', result.get(0).getErrorString());
+    	contactDao.doUpdate(contactList);
     }    
 
     global void finish(Database.BatchableContext bc){
@@ -72,7 +62,6 @@ global class TH_AccountContractAddressUpdateBatchable implements Database.Batcha
         ];
  
         AsyncApexJob job = jobList[0];
-        
         TH_Email email = new TH_Email(
         	'TH_AccountContractAddressUpdateBatchable Finished', 
         	job.createdBy.email, 

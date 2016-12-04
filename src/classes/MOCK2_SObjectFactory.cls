@@ -19,7 +19,8 @@ public virtual class MOCK2_SObjectFactory {
 		protected Map<String, Object> defaultByKeyMap; 
 
 		private Map<SObjectType, String> nameFieldOverrideMap = new Map<SObjectType, String>{
-			Contact.getSObjectType() => 'lastName'
+			Contact.getSObjectType() => 'lastName',
+			Lead.getSObjectType() => 'lastName'
 		}; 
 		
 		public SObjectInQuantityStrategy(SObject template, Integer quantity, String defaultName, Map<String, Object> defaultByKeyMap){
