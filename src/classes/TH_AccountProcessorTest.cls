@@ -1,5 +1,5 @@
 @isTest
-private class AccountProcessorTest {
+private class TH_AccountProcessorTest {
 	private static final User TestRunner = TEST_RunAsUserFactory.create(); 
 	private static final Boolean ATTACH_CONTACTS = TRUE;
 	private static final Boolean NO_ATTACHED_CONTACTS = FALSE;
@@ -14,7 +14,7 @@ private class AccountProcessorTest {
         System.runAs(TestRunner){
             Test.startTest();
             {
-             	AccountProcessor.countContacts(new List<Id>{testAccountId});
+             	TH_AccountProcessor.countContacts(new List<Id>{testAccountId});
             }
             Test.stopTest();
         }
@@ -28,7 +28,7 @@ private class AccountProcessorTest {
 
 	@isTest static void testUpdateCountContactsShouldCorrectlyUpdateNumberOfContacts(){
 		// Arrange
-		AccountProcessor processorUnderTest = new AccountProcessor();
+		TH_AccountProcessor processorUnderTest = new TH_AccountProcessor();
 		Integer testNumberOfContacts = 1;
 		Account testAccount = createTestAccounts(1, ATTACH_CONTACTS)[0];
 		Id testAccountId = testAccount.id;
@@ -53,7 +53,7 @@ private class AccountProcessorTest {
 
 	@isTest static void testSetCountContactsShouldCorrectlySetNumberOfContacts(){
 		// Arrange
-		AccountProcessor processorUnderTest = new AccountProcessor();
+		TH_AccountProcessor processorUnderTest = new TH_AccountProcessor();
 		Integer testNumberOfContacts = 1;
 		List<Account> testAccountList = createTestAccounts(1, ATTACH_CONTACTS);
 		

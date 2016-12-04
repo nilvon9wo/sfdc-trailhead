@@ -71,10 +71,6 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
-        <apexClass>AccountProcessor</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>DAO_AccountAndContactCombinedDao</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -276,6 +272,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_AccountManagerRestResourceTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_AccountProcessor</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_AccountProcessorTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>

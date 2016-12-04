@@ -1,19 +1,19 @@
-public class AccountProcessor {
+public class TH_AccountProcessor {
 	DAO_accountDao accountDao;
 	
-	public AccountProcessor(DAO_accountDao accountDao) {
+	public TH_AccountProcessor(DAO_accountDao accountDao) {
 		this.accountDao = accountDao;
 	}
 	
-	public AccountProcessor() {
+	public TH_AccountProcessor() {
 		this(new DAO_accountDao());
 	}
 	
 
 	@future()
 	public static void countContacts(List<Id> accountIdList) {
-		AccountProcessor accountProcessor = new AccountProcessor();
-		accountProcessor.updateContactCount(accountIdList);
+		TH_AccountProcessor TH_AccountProcessor = new TH_AccountProcessor();
+		TH_AccountProcessor.updateContactCount(accountIdList);
 	}
 	
 	@testVisible() 
