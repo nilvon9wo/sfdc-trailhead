@@ -17,6 +17,14 @@ public virtual class DAO_AccountDao {
         return DAO_SObjectDMLHelper.doInsert(account);
     }
 
+    public virtual UTIL_ResultListWrapper doUpdate(List<Account> accountList) {
+        return DAO_SObjectDMLHelper.doUpdate(accountList);
+    }
+
+    public virtual UTIL_ResultListWrapper doUpdate(Account account) {
+        return DAO_SObjectDMLHelper.doUpdate(account);
+    }
+
     public virtual UTIL_ResultListWrapper doDelete(List<Account> accountList) {
         return DAO_SObjectDMLHelper.doDelete(accountList);
     }

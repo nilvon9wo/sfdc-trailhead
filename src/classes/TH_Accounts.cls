@@ -44,8 +44,10 @@ public class TH_Accounts  {
 	public TH_Accounts setAnnualRevenueFromDescriptonMutation(Map<Id,Account> oldAccountByIdMap){
 		for (Account newAccount : this.accountList) {
 			String oldDescription = oldAccountByIdMap.get(newAccount.id).description;
-			newAccount.annualRevenue = oldDescription.getLevenshteinDistance(newAccount.description);
-			unitOfWork.register(newAccount);
+			String newDescription = newAccount.description;
+			if (newDescription != null){
+				newAccount.annualRevenue = oldDescription.getLevenshteinDistance(newDescription);
+			}
 		}
 		return this; 
 	}
