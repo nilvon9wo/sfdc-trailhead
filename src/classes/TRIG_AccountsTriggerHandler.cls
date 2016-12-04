@@ -7,17 +7,15 @@ public class TRIG_AccountsTriggerHandler extends fflib_SObjectDomain {
 	);
 	List<Account> accountList;
 	TH_Accounts accounts;
-	LOG_Logger logger;
 	
-	public TRIG_AccountsTriggerHandler(List<Account> accountList, TH_Accounts accounts, LOG_Logger logger) {
+	public TRIG_AccountsTriggerHandler(List<Account> accountList, TH_Accounts accounts) {
 		super(accountList);
 		this.accountList = accountList;
 		this.accounts = accounts;
-		this.logger = logger;
 	}
  
 	public TRIG_AccountsTriggerHandler(List<Account> accountList) {
-		this(accountList, new TH_Accounts(accountList, unitOfWork), new LOG_Logger());
+		this(accountList, new TH_Accounts(accountList, unitOfWork));
 	}
 	
 	public class Constructor implements fflib_SObjectDomain.IConstructable {
@@ -33,12 +31,8 @@ public class TRIG_AccountsTriggerHandler extends fflib_SObjectDomain {
 	}
 
     public override void onBeforeInsert() {
-    	logger.info('Hello World');
-    	
     	accounts.setDefaultDescription()
     		.matchShippingToBilling();
-    	
-    	//TH_HypotheticalCalloutService.makeCallout(); 
     }
     
     public override void onAfterInsert() {
@@ -48,15 +42,11 @@ public class TRIG_AccountsTriggerHandler extends fflib_SObjectDomain {
     public override void onBeforeUpdate(Map<Id,SObject> existingAccountMap) {
     	accounts.matchShippingToBilling()
     	    	.setAnnualRevenueFromDescriptonMutation((Map<Id,Account>)existingAccountMap);
-    	
-    	//TH_HypotheticalCalloutService.makeCallout();
     } 
     
     public override void onAfterUpdate(Map<Id,SObject> existingAccountMap) {
     	accounts.createNewOpportunities()
     		.updateExistingOpportunityDescriptions(); 
-    		
-		unitOfWork.commitWork();    		 
     }
 
     public override void onBeforeDelete() {

@@ -48,15 +48,17 @@ public class MSG_EmailSendHelper {
 
     public static void sendFailedEmailNotificationToSupport(String operation, String failedEmailSendResultString)
     {
-        String supportEmailAddress = General_Settings__c.getInstance().Support_Email__c; 
-        if (String.isEmpty(supportEmailAddress)) 
-        { 
-            System.debug (LoggingLevel.ERROR, '!!!!! General_Settings__c.getInstance().Support_Email__c not set.');
-            return; 
-        }
-        
-        String subject = 'A ' + operation + ' has failed; untransacted data is itemized below:';
-        sendNotificationMail((new List<String> { supportEmailAddress }), (subject), (subject + ':<br/>' + failedEmailSendResultString), true, Logginglevel.ERROR, '---- Failed ' + operation + ': ');
+    	if (!System.Test.isRunningTest()) {
+	        String supportEmailAddress = General_Settings__c.getInstance().Support_Email__c; 
+	        if (String.isEmpty(supportEmailAddress)) 
+	        { 
+	            System.debug (LoggingLevel.ERROR, '!!!!! General_Settings__c.getInstance().Support_Email__c not set.');
+	            return; 
+	        }
+	        
+	        String subject = 'A ' + operation + ' has failed; untransacted data is itemized below:';
+	        sendNotificationMail((new List<String> { supportEmailAddress }), (subject), (subject + ':<br/>' + failedEmailSendResultString), true, Logginglevel.ERROR, '---- Failed ' + operation + ': ');
+    	}
     }
 
     // -----------------------------------------------------------------------------------------------------------------------

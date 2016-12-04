@@ -49,6 +49,7 @@ public class MOCK_AccountFactory {
 				contactList[i-1].accountId = account.id;
 			}
 		}
+
 		if (insertMode == TEST_DummyInsertModeEnum.REAL) {
 			upsert (contactList);
 		}
@@ -56,7 +57,6 @@ public class MOCK_AccountFactory {
 			TEST_MockDMLHelper.mockInsert(contactList);
 		}
 		
-		return sObjectListBySObjectMap;		 
 		return sObjectListBySObjectMap;
 	}
 	
@@ -74,8 +74,6 @@ public class MOCK_AccountFactory {
 	 
 	private static Map<SObjectType, List<SObject>> createRelationshipsToContacts (Account account, Integer i, Integer j){
 		Contact contact = MOCK_ContactFactory.createWithAccount(unitOfWork, account, i);
-		System.debug('###### cR2c contact: ' + contact);			
-		
 		sObjectListBySObjectMap.get(Contact.getSObjectType()).add(contact);
 		return sObjectListBySObjectMap;
 	}

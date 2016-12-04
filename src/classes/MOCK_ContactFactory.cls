@@ -38,7 +38,6 @@ public class MOCK_ContactFactory {
 
 	public static Contact createWithAccount(fflib_SObjectUnitOfWork unitOfWork2, Account account, Integer i){
 		Contact contact = create('Contact-' + i, defaultDepartment, DAO_Timing.LATER);
-		System.debug('###### cWA contact: ' + contact);			
 		unitOfWork2.registerNew(contact);
 		return contact;
 	}
