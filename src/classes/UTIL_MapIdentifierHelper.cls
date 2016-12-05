@@ -23,6 +23,7 @@ public class UTIL_MapIdentifierHelper
 		if (currentSObject.getSObjectType() == Lead.SObjectType)    { return create ((Lead)		  	  currentSobject); }
 		if (currentSObject.getSObjectType() == Opportunity.SObjectType) { return create ((Opportunity)		  currentSobject); }
 		if (currentSObject.getSObjectType() == SmsLog__c.SObjectType)   { return create ((SmsLog__c)		  currentSobject); }
+		if (currentSObject.getSObjectType() == Task.SObjectType)   { return create ((Task)		  currentSobject); }
 
 		// TODO: Modify this code to create unique Ids for more SObjects, which will usually have different fields.
 		throw new MapIdentifierUndefinedException('No map identifier has been defined for : ' + currentSObject.getSObjectType());
@@ -37,6 +38,7 @@ public class UTIL_MapIdentifierHelper
 	public static String create (Lead   lead)	         { return 'Lead'   + concatenate(lead,   new List<String>{ 'lastName', 'firstName', 'company', 'leadSource'}); }
 	public static String create (Opportunity opportunity){ return 'Opportunity'+ concatenate(opportunity, new List<String>{ 'name', 'type', 'accountId'}); }
 	public static String create (SmsLog__c  smsLog){ return 'SmsLog__c'+ concatenate(smsLog, new List<String>{ 'fromNumber__c', 'toNumber__c', 'messageResult__c'}); }
+	public static String create (Task  task){ return 'Task'+ concatenate(task, new List<String>{ 'whoId', 'whatId', 'subject', 'description', 'priority', 'status'}); }
 
 	@testVisible private static String concatenate(SObject currentSobject, List<String> fieldNameList)
 	{

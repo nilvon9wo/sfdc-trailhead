@@ -1,15 +1,15 @@
 global class TH_OpportunityOwnerReminderSchedulable implements Schedulable {
-	DAO_OpportunitiesDao opportunitiesDao;
+	DAO_OpportunitiesDao opportunitiesDao; 
 	TH_TaskUtil taskUtil;
 	
 	private static final Boolean IS_OPEN = FALSE;
 	
-	TH_OpportunityOwnerReminderSchedulable(DAO_OpportunitiesDao opportunitiesDao, TH_TaskUtil taskUtil){
+	public TH_OpportunityOwnerReminderSchedulable(DAO_OpportunitiesDao opportunitiesDao, TH_TaskUtil taskUtil){
 		this.opportunitiesDao = opportunitiesDao;
 		this.taskUtil = taskUtil;
 	}
-
-	TH_OpportunityOwnerReminderSchedulable(){
+ 
+	public TH_OpportunityOwnerReminderSchedulable(){
 		this(new DAO_OpportunitiesDao(), new TH_TaskUtil());
 	}
 	
