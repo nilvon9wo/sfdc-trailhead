@@ -18,4 +18,21 @@ public class TH_AccountUtils {
 		return this.accountDao.getByBillingState(stateAbbreviation);
 	}
 	
+	public ID addParentUpdateToQueue(String billingState, String parentName) {
+		List<Account> accountList = this.accountDao.getByBillingState(billingState);
+		
+		List<Account> parentAccountList = this.accountDao.getByName(parentName);
+		Id parentId;
+		if (parentAccountList.size() > 0) {
+			parentId = parentAccountList[0].id;
+		}
+		else {
+			new TH_AccountUtilException(parentName + ' is not a valid company name');			
+		}
+
+		TH_AccountUpdateParentQueueable updateJob = new TH_AccountUpdateParentQueueable(accountList, parentId);
+		return System.enqueueJob(updateJob);
+	}
+	
+	class TH_AccountUtilException extends Exception{}
 }

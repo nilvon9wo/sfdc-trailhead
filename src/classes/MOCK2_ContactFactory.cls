@@ -5,6 +5,17 @@ public class MOCK2_ContactFactory extends MOCK2_SObjectFactory {
 		'lastName' => 'last'
 	}; 
 	
+	public static List<Contact> createList(Contact template, Integer quantity, TEST_DummyInsertModeEnum insertMode){
+		MockStrategyInterface strategy = new ContactInQuantityStrategy(template, quantity); 
+		return (List<Contact>) MOCK2_SObjectFactory.createList(strategy, insertMode);
+	}	  
+	
+	class ContactInQuantityStrategy extends SObjectInQuantityStrategy {
+		ContactInQuantityStrategy(SObject template, Integer quantity) {
+			super(template, quantity, 'Contact ', defaultByKeyMap);
+		}
+	}
+	
 	public static List<Contact> createList(
 			Contact template, Integer quantity, List<Account> accountList, TEST_DummyInsertModeEnum insertMode
 		){

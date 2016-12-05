@@ -1,5 +1,7 @@
 public virtual class DAO_AccountDao {
     private DAO_AccountsSelector selector;
+    
+    private static final Integer USE_SFDC_LIMIT = -999;
 
     public DAO_AccountDao(DAO_AccountsSelector selector) {
         this.selector = selector;
@@ -88,7 +90,11 @@ public virtual class DAO_AccountDao {
     }
 
 	public List<Account> getByBillingState(String stateAbbreviation) {
-		return this.selector.selectByBillingState(stateAbbreviation); 
+		return this.selector.selectByBillingState(stateAbbreviation, USE_SFDC_LIMIT); 
+	}
+
+	public List<Account> getByBillingState(String stateAbbreviation, Integer maxRecords) {
+		return this.selector.selectByBillingState(stateAbbreviation, maxRecords); 
 	}
 
 }

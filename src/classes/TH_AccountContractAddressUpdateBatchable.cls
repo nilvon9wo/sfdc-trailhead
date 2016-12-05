@@ -38,13 +38,11 @@ global class TH_AccountContractAddressUpdateBatchable implements Database.Batcha
     	List<Contact> contactList = new List<Contact>();
     	for (Account account : accountList) {
     		for (Contact contact : account.contacts) {
-    			console.log('BEFORE', contact);
     			contact.MailingStreet = account.BillingStreet;
     			contact.MailingCity = account.BillingCity;
     			contact.MailingState = account.BillingState;
     			contact.MailingPostalCode = account.BillingPostalCode;
     			contactList.add(contact);
-    			console.log('AFTER', contact);
     			recordsProcessed++;
     		}
     	}

@@ -71,6 +71,18 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>AddPrimaryContact</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AddPrimaryContactTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Console</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DAO_AccountAndContactCombinedDao</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -80,6 +92,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>DAO_AccountsSelector</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DAO_AsyncApexJobSelector</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -104,6 +120,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>DAO_Exception</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DAO_LeadDao</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -159,6 +179,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DAO_UserSelector</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DTO_OpportunityInfo</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -172,6 +196,22 @@
     </classAccesses>
     <classAccesses>
         <apexClass>LOG_Logger</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MOCK2_AccountFactory</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MOCK2_ContactFactory</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MOCK2_LeadFactory</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MOCK2_SObjectFactory</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -231,6 +271,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TEST_DMLHelper</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TEST_DummyInsertModeEnum</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -255,6 +299,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_AccountContractAddressUpdateBatchTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_AccountContractAddressUpdateBatchable</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_AccountDeletionTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -275,11 +327,19 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TH_AccountProcessor</apexClass>
+        <apexClass>TH_AccountProcessorBatchable</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TH_AccountProcessorTest</apexClass>
+        <apexClass>TH_AccountProcessorBatchableTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_AccountUpdateParentQueueable</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_AccountUpdateParentQueueableTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>

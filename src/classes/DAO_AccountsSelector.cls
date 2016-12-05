@@ -107,10 +107,13 @@ public class DAO_AccountsSelector extends fflib_SObjectSelector {
         );
     }
     
-	public List<Account> selectByBillingState(String stateAbbreviation) {
+	public List<Account> selectByBillingState(String stateAbbreviation, Integer recordLimit) {
+		recordLimit = (recordLimit > -1) ? recordLimit : 200; 
+
         return (List<Account>) Database.query(
                 newQueryFactory()
                         .setCondition('billingState =: stateAbbreviation')
+                        .setLimit(recordLimit)
                         .toSOQL()
         );
 	}

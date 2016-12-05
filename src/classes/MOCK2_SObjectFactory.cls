@@ -89,7 +89,6 @@ public virtual class MOCK2_SObjectFactory {
 		
 		public override List<SObject> execute(List<SObject> mockSObjectList) {
 			for (SObject obj : SObjectList) {
-				console.log('relatedField', relatedField);
 				this.defaultByKeyMap.put(this.relatedField, obj.get('id'));
 				super.execute(mockSObjectList);
 			}
@@ -100,7 +99,6 @@ public virtual class MOCK2_SObjectFactory {
 	// ----------------------------------------------------------------------------------------------
 	
 	public static SObject fillIfBlank (SObject sObj, String targetField, Object fillValue) {
-		console.log('targetField', targetField);
 		Object value = sObj.get(targetField);
 		if (String.isBlank(String.valueOf(value))) {
 			sObj.put(targetField, fillValue); 
