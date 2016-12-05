@@ -71,14 +71,6 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
-        <apexClass>AddPrimaryContact</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>AddPrimaryContactTest</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Console</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -360,6 +352,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_AccountsSoapWebService</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_AddPrimaryContact</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_AddPrimaryContactTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>

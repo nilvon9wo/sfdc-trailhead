@@ -1,4 +1,4 @@
-public class AddPrimaryContact implements Queueable {
+public class TH_AccountAddContactQueueable implements Queueable {
 	private static final Integer MAX_ACCOUNTS = 200;
 
 	private DAO_AccountDao accountDao;
@@ -7,14 +7,14 @@ public class AddPrimaryContact implements Queueable {
 	Contact contact;
 	String state;
 	
-	public AddPrimaryContact (Contact contact, String state, DAO_AccountDao accountDao, DAO_ContactDao contactDao){
+	public TH_AccountAddContactQueueable (Contact contact, String state, DAO_AccountDao accountDao, DAO_ContactDao contactDao){
 		this.contact = contact; 
 		this.state = state;
     	this.accountDao = accountDao; 
     	this.contactDao = contactDao; 
 	}
 	 
-	public AddPrimaryContact (Contact contact, String state){
+	public TH_AccountAddContactQueueable (Contact contact, String state){
 		this(contact, state, new DAO_AccountDao(), new DAO_ContactDao()); 
 	}
 	 

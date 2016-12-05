@@ -1,5 +1,5 @@
 @isTest
-private class AddPrimaryContactTest {
+private class TH_AccountAddContactQueueTest {   
 	private static final User TestRunner = TEST_RunAsUserFactory.create(); 
 	
 	private static final String targetState = 'CA';
@@ -19,7 +19,7 @@ private class AddPrimaryContactTest {
 	@isTest static void testAccountsUpdateByQueueable(){
 		// Arrange 
 		Contact testContact = [SELECT Id, lastName FROM Contact LIMIT 1]; 
-		AddPrimaryContact updater = new AddPrimaryContact(testContact, targetState);
+		TH_AccountAddContactQueueable updater = new TH_AccountAddContactQueueable(testContact, targetState);
 		
 		// Act 
         System.runAs(TestRunner){
