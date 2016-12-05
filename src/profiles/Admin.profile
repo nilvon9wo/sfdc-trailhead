@@ -111,11 +111,23 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DAO_CronJobDetailSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DAO_CronTriggerSelector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DAO_Exception</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DAO_LeadDao</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DAO_LeadSelector</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -163,6 +175,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DAO_TaskDao</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DAO_Timing</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -200,6 +216,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>MOCK2_LeadFactory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MOCK2_OpportunityFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -287,6 +307,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_AccountAddContactQueueTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_AccountAddContactQueueable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_AccountArrayConsumerInterface</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -352,14 +380,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_AccountsSoapWebService</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TH_AddPrimaryContact</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TH_AddPrimaryContactTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -507,6 +527,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TH_DoAwesomeStuff</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TH_Email</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -556,6 +580,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_HypotheticalCalloutService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_LeadDailyProcessorSchedulable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_LeadDailyProcessorSchedulableTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -616,6 +648,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TH_OpportunityLineItems</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunityOwnerReminderSchedulabTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TH_OpportunityOwnerReminderSchedulable</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
