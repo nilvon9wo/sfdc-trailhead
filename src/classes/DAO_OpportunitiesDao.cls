@@ -26,6 +26,10 @@ public virtual class DAO_OpportunitiesDao {
 		Set<Id> accountIdSet = (new Map<Id, Account>(accountIdList)).keySet();
 		return this.selector.selectByAccountIds(accountIdSet); 
 	}
+
+	public virtual List<Opportunity> getOverdue () {
+		return this.selector.selectOverdue(); 
+	}
 	
 	public virtual void tryUpdate(fflib_SObjectUnitOfWork unitOfWork){
 		unitOfWork.commitWork();	

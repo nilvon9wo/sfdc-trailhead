@@ -12,4 +12,8 @@ public class TH_TaskUtil {
 		
 		return (leadState == 'CA') ? 'High' : 'Normal';
 	}
+	
+	public void remindOwners(List<Opportunity> opportunityList) {
+		// TODO
+	}
 }

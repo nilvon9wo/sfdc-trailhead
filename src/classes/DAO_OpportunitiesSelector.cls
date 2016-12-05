@@ -70,6 +70,15 @@ public class DAO_OpportunitiesSelector extends fflib_SObjectSelector {
         );
     }
 
+    public List<Opportunity> selectOverdue() {
+        return (List<Opportunity>) Database.query(
+                newQueryFactory()
+                        .setCondition('isClosed = FALSE AND closeDate < TODAY')
+                        .toSOQL()
+        );
+    }
+
+
     public List<DTO_OpportunityInfo> selectOpportunityInfoById (Set<Id> idSet) {
         List<DTO_OpportunityInfo> opportunityInfoList = new List<DTO_OpportunityInfo>();
         for (Opportunity opportunity : Database.query(
