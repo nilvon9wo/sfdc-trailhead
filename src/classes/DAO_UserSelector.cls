@@ -3,7 +3,8 @@ public class DAO_UserSelector extends fflib_SObjectSelector {
     public List<Schema.SObjectField> getSObjectFieldList() {
         return new List<Schema.SObjectField>{
                 User.id,
-                User.email
+                User.email,
+                User.UserPreferencesLightningExperiencePreferred
         };
     }
 
