@@ -1,0 +1,10 @@
+<apex:page docType="html-5.0" applyBodyTag="false" applyHtmlTag="false" showHeader="false" standardStylesheets="false"> 
+    <apex:includeScript value="{!URLFOR($Resource.ForceUI)}"/> 
+    
+    <script type="text/javascript">
+        (function(vfContext){
+            vfContext.ForceUI = vfContext.ForceUI || {};
+            vfContext.ForceUI.UserUITheme = '{! $User.UIThemeDisplayed }';
+        })(thix);
+    </script>
+</apex:page>

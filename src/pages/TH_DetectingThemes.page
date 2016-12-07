@@ -1,0 +1,17 @@
+<apex:page standardController="Account">
+    <c:AppStyle themeValue="classic2010Theme" matchingTheme="Theme3" cssFileName="classic-styling" />
+    <c:AppStyle themeValue="lightningDesktop" matchingTheme="Theme4d" cssFileName="lightning-styling" />
+    <c:AppStyle themeValue="Salesforce1" matchingTheme="Theme4t" cssFileName="mobile-styling" />
+
+    <p>
+        Value of $User.UIThemeDisplayed: {! $User.UIThemeDisplayed }
+    </p>
+
+    <apex:outputPanel rendered="{! $User.UIThemeDisplayed == 'Theme3' }">
+        <apex:outputText value="This is Salesforce Classic." />
+        <apex:outputText value="These are multiple components wrapped by an outputPanel." />
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{! $User.UIThemeDisplayed == 'Theme4d' }">
+        <apex:outputText value="Everything is simpler in Lightning Experience." />
+    </apex:outputPanel>
+</apex:page>

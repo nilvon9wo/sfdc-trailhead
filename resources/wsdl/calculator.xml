@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://calculator.services/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CalculatorImplService" targetNamespace="http://calculator.services/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://calculator.services/" elementFormDefault="unqualified" targetNamespace="http://calculator.services/" version="1.0">
+
+  <xs:element name="doAdd" type="tns:doAdd"/>
+
+  <xs:element name="doAddResponse" type="tns:doAddResponse"/>
+
+  <xs:element name="doDivide" type="tns:doDivide"/>
+
+  <xs:element name="doDivideResponse" type="tns:doDivideResponse"/>
+
+  <xs:element name="doMultiply" type="tns:doMultiply"/>
+
+  <xs:element name="doMultiplyResponse" type="tns:doMultiplyResponse"/>
+
+  <xs:element name="doSubtract" type="tns:doSubtract"/>
+
+  <xs:element name="doSubtractResponse" type="tns:doSubtractResponse"/>
+
+  <xs:complexType name="doDivide">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:double"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doDivideResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doSubtract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:double"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doSubtractResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doMultiply">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:double"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doMultiplyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doAdd">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:double"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="doAddResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="doSubtractResponse">
+    <wsdl:part element="tns:doSubtractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doMultiplyResponse">
+    <wsdl:part element="tns:doMultiplyResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doAddResponse">
+    <wsdl:part element="tns:doAddResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doDivide">
+    <wsdl:part element="tns:doDivide" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doSubtract">
+    <wsdl:part element="tns:doSubtract" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doDivideResponse">
+    <wsdl:part element="tns:doDivideResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doMultiply">
+    <wsdl:part element="tns:doMultiply" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doAdd">
+    <wsdl:part element="tns:doAdd" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Calculator">
+    <wsdl:operation name="doDivide">
+      <wsdl:input message="tns:doDivide" name="doDivide">
+    </wsdl:input>
+      <wsdl:output message="tns:doDivideResponse" name="doDivideResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSubtract">
+      <wsdl:input message="tns:doSubtract" name="doSubtract">
+    </wsdl:input>
+      <wsdl:output message="tns:doSubtractResponse" name="doSubtractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doMultiply">
+      <wsdl:input message="tns:doMultiply" name="doMultiply">
+    </wsdl:input>
+      <wsdl:output message="tns:doMultiplyResponse" name="doMultiplyResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doAdd">
+      <wsdl:input message="tns:doAdd" name="doAdd">
+    </wsdl:input>
+      <wsdl:output message="tns:doAddResponse" name="doAddResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalculatorImplServiceSoapBinding" type="tns:Calculator">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="doDivide">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doDivide">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doDivideResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSubtract">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doSubtract">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doSubtractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doMultiply">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doMultiply">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doMultiplyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doAdd">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="doAdd">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doAddResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalculatorImplService">
+    <wsdl:port binding="tns:CalculatorImplServiceSoapBinding" name="CalculatorImplPort">
+      <soap:address location="https://th-apex-soap-service.herokuapp.com/service/calculator"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

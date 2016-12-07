@@ -1,0 +1,9 @@
+<apex:component >
+    <apex:attribute name="themeValue" description="This is the value for the component." type="String" required="true"/>
+    <apex:attribute name="matchingTheme" description="This is the name of the theme to check." type="String" required="true"/>
+    <apex:attribute name="cssFileName" description="This is the value for the component." type="String" required="true"/>
+
+    <apex:variable var="uiTheme" value="{!themeValue}" rendered="{! $User.UIThemeDisplayed == '{!matchingTheme}' }"> 
+        <apex:stylesheet value="{!URLFOR($Resource.AppStyles, '{!cssFileName}.css')}" />
+    </apex:variable>
+</apex:component>

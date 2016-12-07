@@ -1,0 +1,43 @@
+<apex:page standardController="Account" extensions="TH_ForceUIVFExtension" showHeader="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" title="ForceUI Utiltities">
+<html lang="en">
+    <head>
+        <title>Force UI Utilities</title>
+        <apex:include pageName="TH_UIThemeDisplayShim"/>
+    </head>
+    <body>
+        <h1>Force UI Utilities</h1>
+        <p>This is a page used for testing different ways of determining the user interface for context in which it's being displayed.</p>
+    
+        <h2>$User.UITheme Global Variable</h2>        
+        <p><label>$User.UITheme</label>: {! $User.UITheme }</p>
+        <p><label>$User.UIThemeDisplayed</label>: {! $User.UIThemeDisplayed }</p>
+        
+        <h2>UIUtils JavaScript</h2>
+        <p><label>ForceUI.UserUITheme</label>: <span id="UserUIThemeJS">(loading...)</span></p>
+        <p><label>isSalesforce1()</label>: <span id="isSalesforce1JS">(loading...)</span></p>
+        <p><label>isLightningExperience()</label>: <span id="isLightningExperienceJS">(loading...)</span></p>
+        <p><label>isSalesforceClassic()</label>: <span id="isSalesforceClassicJS">(loading...)</span></p>
+        
+        <h2>userThemePreferenceResult (JSON)</h2>
+        <pre><span id="userThemePreferenceResult"/></pre>
+
+        <script src="/soap/ajax/36.0/connection.js" type="text/javascript"></script>        
+        <script type="text/javascript">
+            sforce.connection.sessionId = '{! $Api.Session_ID }';
+            var uiPrefQuery = "SELECT Id, UserPreferencesLightningExperiencePreferred FROM User WHERE Id = '{! $User.Id }'";
+            var userThemePreferenceResult = sforce.connection.query(uiPrefQuery);
+
+
+            document.addEventListener('DOMContentLoaded', function(event){
+                document.getElementById('UserUIThemeJS').innerHTML = ForceUI.UserUITheme;
+                document.getElementById('isSalesforce1JS').innerHTML = ForceUI.isSalesforce1();
+                document.getElementById('isLightningExperienceJS').innerHTML = ForceUI.isLightningExperience();
+                document.getElementById('isSalesforceClassicJS').innerHTML = ForceUI.isSalesforceClassic();
+                document.getElementById('userThemePreferenceResult').innerHTML = userThemePreferenceResult;
+            });
+        </script>
+        
+        
+    </body>
+</html>
+</apex:page>
