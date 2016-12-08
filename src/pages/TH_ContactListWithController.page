@@ -1,0 +1,26 @@
+<apex:page controller="TH_ContactListVFController">
+    <apex:form >
+        <apex:pageBlock title="Contact List" id="contact_list">
+            <apex:pageBlockTable value="{!contactList}" var="contact">
+                <apex:column value="{!contact.firstName}" >
+                    <apex:facet name="header">
+                        <apex:commandLink action="{!sortByFirstName}" reRender="contact_list">
+                            <apex:outputText value="{! $ObjectType.Contact.Fields.FirstName.Label }"/>
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+
+                <apex:column value="{!contact.lastName}" >
+                    <apex:facet name="header">
+                        <apex:commandLink action="{!sortByLastName}" reRender="contact_list">
+                           <apex:outputText value="{! $ObjectType.Contact.Fields.LastName.Label }"/>
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+
+                <apex:column value="{!contact.title}" />
+                <apex:column value="{!contact.email}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

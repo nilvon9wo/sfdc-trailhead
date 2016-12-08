@@ -1,12 +1,14 @@
 public virtual class DAO_ContactDao {
+	DAO_ContactSelector selector;
 	DAO_AccountDao accountDao;
 	
-	public DAO_ContactDao(DAO_AccountDao accountDao){
+	public DAO_ContactDao(DAO_ContactSelector selector, DAO_AccountDao accountDao){
+		this.selector = selector;
 		this.accountDao = accountDao;
 	}
 
 	public DAO_ContactDao(){
-		this(new DAO_AccountDao());
+		this(new DAO_ContactSelector(), new DAO_AccountDao());
 	}
 	
 	public virtual UTIL_ResultListWrapper doInsert(List<Contact> contactList){
@@ -24,6 +26,16 @@ public virtual class DAO_ContactDao {
 	public UTIL_ResultListWrapper deleteByLastName(String lastName) {
 		List<Contact> contactList = this.getByLastName(lastName);
 		return this.doDelete(contactList); 
+	}
+
+	public virtual Map<SObjectType, UTIL_ResultListWrapper> updateWithAccount(Contact contact) {
+		UTIL_ResultListWrapper contactResult = DAO_SObjectDMLHelper.doUpdate(contact);
+		UTIL_ResultListWrapper accountResult = DAO_SObjectDMLHelper.doUpdate(contact.account);
+		
+		return new Map<SObjectType, UTIL_ResultListWrapper>{
+			Contact.getSObjectType() => contactResult,
+			Account.getSObjectType() => accountResult
+		};
 	}
 
 	public virtual List<Contact> getByLastName(String lastName) {
@@ -59,15 +71,9 @@ public virtual class DAO_ContactDao {
 			contactListList.add(account.Contacts);
 		}
 		return contactListList;
-	}
+	} 
 	
-	public virtual Map<SObjectType, UTIL_ResultListWrapper> updateWithAccount(Contact contact) {
-		UTIL_ResultListWrapper contactResult = DAO_SObjectDMLHelper.doUpdate(contact);
-		UTIL_ResultListWrapper accountResult = DAO_SObjectDMLHelper.doUpdate(contact.account);
-		
-		return new Map<SObjectType, UTIL_ResultListWrapper>{
-			Contact.getSObjectType() => contactResult,
-			Account.getSObjectType() => accountResult
-		};
+	public virtual List<Contact> getList(String sortOrder, Integer listSize) {
+		return this.selector.selectList(sortOrder, listSize);
 	}
 }

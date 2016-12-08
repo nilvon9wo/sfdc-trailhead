@@ -1,0 +1,28 @@
+<apex:page standardController="Account">
+    <h1>Edit Account</h1>
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock title="Edit Account">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!account.name}"/>
+                <apex:inputField value="{!account.phone}"/>
+                <apex:inputField value="{!account.industry}"/>
+                <apex:inputField value="{!account.annualRevenue}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Save"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <apex:pageBlock title="Contacts">
+            <apex:pageBlockTable value="{!account.contacts}" var="contact">
+                <apex:column >
+                    <apex:outputLink value="{! URLFOR($Action.contact.edit, contact.id) }">Edit</apex:outputLink>
+                    <apex:outputLink value="{! URLFOR($Action.contact.delete, contact.id) }">Delete</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!contact.name}" />
+                <apex:column value="{!contact.title}" />
+                <apex:column value="{!contact.phone}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page standardController="Account">
+    <apex:stylesheet value="{!$Resource.AppStylesheet}"/>
+    <apex:outputText styleClass="indirect" value="This text is styled indirectly."/>
+    <apex:outputText styleClass="asideText" value="This text is styled via a style class."/>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.AppStyles, 'app-styles.css')}" />
+    
+    <c:AppStyle themeValue="lightningDesktop" matchingTheme="Theme4d" cssFileName="lightning-styling" />
+</apex:page>

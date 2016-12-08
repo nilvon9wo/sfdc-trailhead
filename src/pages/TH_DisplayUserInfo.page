@@ -1,0 +1,30 @@
+<apex:page >
+    Address:    {! $User.Address    }<br/>
+    Alias:    {! $User.Alias    }<br/>
+    City:    {! $User.City  }<br/>
+    CommunityNickname:    {! $User.CommunityNickname    }<br/>
+    CompanyName:    {! $User.CompanyName    }<br/>
+    ContactId:    {! $User.ContactId    }<br/>
+    Country:    {! $User.Country    }<br/>
+    Department:    {! $User.Department  }<br/>
+    Division:    {! $User.Division  }<br/>
+    Email:    {! $User.Email    }<br/>
+    EmployeeNumber:    {! $User.EmployeeNumber  }<br/>
+    Extension:    {! $User.Extension    }<br/>
+    Fax:    {! $User.Fax    }<br/>
+    FirstName:    {! $User.FirstName    }<br/>
+    IsActive:    {! $User.IsActive  }<br/>
+    LastName:    {! $User.LastName  }<br/>
+    Latitude:    {! $User.Latitude  }<br/>
+    Longitude:    {! $User.Longitude    }<br/>
+    ManagerId:    {! $User.ManagerId    }<br/>
+    MobilePhone:    {! $User.MobilePhone    }<br/>
+    Phone:    {! $User.Phone    }<br/>
+    PostalCode:    {! $User.PostalCode  }<br/>
+    ProfileId:    {! $User.ProfileId    }<br/>
+    State:    {! $User.State    }<br/>
+    Street:    {! $User.Street  }<br/>
+    Title:    {! $User.Title    }<br/>
+    Username:    {! $User.Username  }<br/>
+    UserRoleId:    {! $User.UserRoleId  }<br/>
+</apex:page>
