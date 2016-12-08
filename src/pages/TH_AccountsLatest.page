@@ -1,0 +1,14 @@
+<apex:page docType="html-5.0" title="Latest Accounts">
+    <apex:stylesheet value="{!URLFOR($Resource.AppStyles, 'mobile-styling.css')}"/>
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="Account" fields="Id,Name,LastModifiedDate"/>
+    </apex:remoteObjects>
+        
+    <div class="mypage">
+        <h2>Latest Accounts</h2>
+        <ul id="accountList"/>
+    </div>    
+    
+    <apex:includeScript value="{!URLFOR($Resource.jQuery)}"/>    
+    <apex:includeScript value="{!URLFOR($Resource.TH_LatestAccountsJS)}"  loadOnReady="true"/>    
+</apex:page>

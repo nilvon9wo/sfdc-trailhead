@@ -1,0 +1,5 @@
+<apex:page controller="TH_CaseNewListVFController">
+    <apex:repeat value="{!newCases}" var="case">
+        <apex:outputLink value="/{!case.id}">{!case.caseNumber}</apex:outputLink>
+    </apex:repeat>
+</apex:page>

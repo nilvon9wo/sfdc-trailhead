@@ -1,0 +1,27 @@
+.mypage {
+    font-family: "ProximaNovaSoft-Regular", Calibri; 
+    font-size: 110%;
+    padding-top: 12px;
+}
+.mypage h2 {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 24px;
+}
+.mypage ul {
+    list-style-type: none;
+    padding: 0;
+}
+.mypage a {
+    display: block;
+    padding: 10px;
+}
+.mypage li {
+    border-bottom: solid 1px #dddddd;
+    margin: 0;
+}
+.mypage a:hover {
+    background-color: #dddddd;
+    text-decoration: none;
+    color: #000000;
+}

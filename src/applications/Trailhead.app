@@ -10,4 +10,6 @@
     <tab>standard-Opportunity</tab>
     <tab>standard-Product2</tab>
     <tab>SmsLog__c</tab>
+    <tab>TH_LatestAccounts</tab>
+    <tab>HelloMobile</tab>
 </CustomApplication>
