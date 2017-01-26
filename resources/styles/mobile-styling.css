@@ -2,26 +2,50 @@
     font-family: "ProximaNovaSoft-Regular", Calibri; 
     font-size: 110%;
     padding-top: 12px;
-}
-.mypage h2 {
-    margin-left: 10px;
-    font-weight: normal;
-    font-size: 24px;
-}
-.mypage ul {
-    list-style-type: none;
-    padding: 0;
+    width: 100%;
 }
 .mypage a {
     display: block;
     padding: 10px;
-}
-.mypage li {
-    border-bottom: solid 1px #dddddd;
-    margin: 0;
 }
 .mypage a:hover {
     background-color: #dddddd;
     text-decoration: none;
     color: #000000;
 }
+.mypage button {
+    -webkit-appearance: button;
+    border-radius: 3px;
+    display: block;
+    padding: 12px;
+    margin: 4px 0;
+    width: 100%;
+    background: #eee;
+    border: solid 1px #ccc;
+}
+.mypage h2 {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 24px;
+}
+.mypage input[type=text] {
+    width: 100%;
+    height: 35px;
+    -webkit-appearance: none;
+    padding: 0 8px;
+    margin: 4px 0;
+    line-height: 21px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+.mypage li {
+    border-bottom: solid 1px #dddddd;
+    margin: 0;
+}
+.mypage ul {
+    list-style-type: none;
+    padding: 0;
+}
+

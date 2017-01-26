@@ -5,6 +5,6 @@
         (function(vfContext){
             vfContext.ForceUI = vfContext.ForceUI || {};
             vfContext.ForceUI.UserUITheme = '{! $User.UIThemeDisplayed }';
-        })(thix);
+        })(this);
     </script>
 </apex:page>

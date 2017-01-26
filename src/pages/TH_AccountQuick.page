@@ -1,0 +1,20 @@
+<apex:page docType="html-5.0" title="Create Account">
+    <apex:stylesheet value="{!URLFOR($Resource.AppStyles, 'mobile-styling.css')}"/>
+    <apex:includeScript value="/canvas/sdk/js/publisher.js"/>
+    <apex:include pageName="TH_UIThemeDisplayShim"/>
+
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="Account" fields="Id,Name"/>
+    </apex:remoteObjects>
+
+    <div class="mypage">
+        <label for="accountName">Account Name:</label>
+        <input type="text" id="accountName" />
+        <apex:variable var="createButton" value="createButton" rendered="{!$User.UIThemeDisplayed != 'Theme4t'}">
+        	<button onclick="createAccount()">Create Account</button>
+        </apex:variable>
+    </div>
+    
+    <apex:includeScript value="{!URLFOR($Resource.jQuery)}"/>
+    <apex:includeScript value="{!URLFOR($Resource.TH_AccountFactoryJS)}" loadOnReady="true" />
+</apex:page>
