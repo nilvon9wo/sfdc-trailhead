@@ -3,25 +3,6 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>Role</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Technical Contact</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Business Contact</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decision Maker</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <type>Picklist</type>
     </fields>
 </CustomObject>

@@ -1,0 +1,16 @@
+<apex:page docType="html-5.0" controller="TH_BusinessCardController">
+    <apex:pageBlock title="Business Card">
+        <apex:pageBlockSection title="Details">
+            <apex:outputText value="{!$User.FirstName}"/><br/>
+            <apex:outputText value="{!$User.LastName}"/><br/>
+            <apex:outputText value="{!$User.Email}"/><br/>
+            <apex:outputText value="{!$User.Phone}"/><br/>
+            <apex:outputText value="{!$User.Title}"/><br/>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Send To">
+            <apex:form title="Send to:">
+                <apex:input label="Email" value="{!contactEmail}" type="email" html-pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z0-9._-]+$"/>
+            </apex:form>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

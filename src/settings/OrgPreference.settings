@@ -17,6 +17,10 @@
         <settingValue>false</settingValue>
     </preferences>
     <preferences>
+        <settingName>AnalyticsSharingEnable</settingName>
+        <settingValue>true</settingValue>
+    </preferences>
+    <preferences>
         <settingName>DisableParallelApexTesting</settingName>
         <settingValue>false</settingValue>
     </preferences>
@@ -41,11 +45,23 @@
         <settingValue>true</settingValue>
     </preferences>
     <preferences>
-        <settingName>AsyncSaveEnabled</settingName>
+        <settingName>VoiceEnabled</settingName>
         <settingValue>false</settingValue>
     </preferences>
     <preferences>
-        <settingName>VoiceEnabled</settingName>
+        <settingName>VoiceMailEnabled</settingName>
+        <settingValue>false</settingValue>
+    </preferences>
+    <preferences>
+        <settingName>VoiceCallListEnabled</settingName>
+        <settingValue>false</settingValue>
+    </preferences>
+    <preferences>
+        <settingName>XssProtection</settingName>
+        <settingValue>false</settingValue>
+    </preferences>
+    <preferences>
+        <settingName>ContentSniffingProtection</settingName>
         <settingValue>false</settingValue>
     </preferences>
     <preferences>
@@ -63,5 +79,9 @@
     <preferences>
         <settingName>S1DesktopEnabled</settingName>
         <settingValue>true</settingValue>
+    </preferences>
+    <preferences>
+        <settingName>ActivityAnalyticsEnabled</settingName>
+        <settingValue>false</settingValue>
     </preferences>
 </OrgPreferenceSettings>

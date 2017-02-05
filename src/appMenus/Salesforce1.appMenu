@@ -8,4 +8,8 @@
         <name>TH_LatestAccounts</name>
         <type>CustomTab</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>TH_QuickAccount</name>
+        <type>CustomTab</type>
+    </appMenuItems>
 </AppMenu>

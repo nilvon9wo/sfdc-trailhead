@@ -12,4 +12,5 @@
     <tab>SmsLog__c</tab>
     <tab>TH_LatestAccounts</tab>
     <tab>HelloMobile</tab>
+    <tab>TH_QuickAccount</tab>
 </CustomApplication>

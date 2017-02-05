@@ -58,7 +58,6 @@
         <style>CustomLinks</style>
     </layoutSections>
     <relatedLists>
-        <fields>Name</fields>
         <fields>Content</fields>
         <fields>Persona</fields>
         <fields>Posted</fields>
