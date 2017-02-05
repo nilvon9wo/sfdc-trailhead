@@ -34,7 +34,7 @@
     </actionOverrides>
     <deploymentStatus>InDevelopment</deploymentStatus>
     <description>Orders</description>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <externalDataSource>OrderDB</externalDataSource>
@@ -53,6 +53,7 @@
         <referenceTo>Account</referenceTo>
         <relationshipLabel>External Orders</relationshipLabel>
         <relationshipName>External_Orders</relationshipName>
+        <trackFeedHistory>false</trackFeedHistory>
         <type>IndirectLookup</type>
     </fields>
     <fields>
@@ -65,6 +66,7 @@
         <isSortingDisabled>false</isSortingDisabled>
         <label>orderDate</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <type>DateTime</type>
     </fields>
     <fields>
@@ -79,6 +81,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -92,6 +95,7 @@
         <isSortingDisabled>false</isSortingDisabled>
         <label>shippedDate</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <type>DateTime</type>
     </fields>
     <label>External Orders</label>
