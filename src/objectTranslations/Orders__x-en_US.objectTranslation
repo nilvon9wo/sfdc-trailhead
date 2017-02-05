@@ -11,6 +11,7 @@
     <fields>
         <label><!-- customerID --></label>
         <name>customerID__c</name>
+        <relationshipLabel><!-- External Orders --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- orderDate --></label>

@@ -291,6 +291,15 @@
         <fields>PARTNER.ROLE</fields>
         <relatedList>RelatedPartnerList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>ExternalId</fields>
+        <fields>orderDate__c</fields>
+        <fields>shippedDate__c</fields>
+        <fields>DisplayUrl</fields>
+        <relatedList>Orders__x.customerID__c</relatedList>
+        <sortField>orderDate__c</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
     <showEmailCheckbox>true</showEmailCheckbox>

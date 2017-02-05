@@ -48,11 +48,12 @@
         <isNameField>false</isNameField>
         <isSortingDisabled>false</isSortingDisabled>
         <label>customerID</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <type>Number</type>
-        <unique>false</unique>
+        <length>18</length>
+        <referenceTargetField>Account.Customer_ID__c</referenceTargetField>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>External Orders</relationshipLabel>
+        <relationshipName>External_Orders</relationshipName>
+        <type>IndirectLookup</type>
     </fields>
     <fields>
         <fullName>orderDate__c</fullName>
