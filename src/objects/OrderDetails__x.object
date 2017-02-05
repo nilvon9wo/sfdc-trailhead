@@ -48,11 +48,11 @@
         <isNameField>false</isNameField>
         <isSortingDisabled>false</isSortingDisabled>
         <label>orderID</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <type>Number</type>
-        <unique>false</unique>
+        <length>18</length>
+        <referenceTo>Orders__x</referenceTo>
+        <relationshipLabel>External Order Details</relationshipLabel>
+        <relationshipName>External_Order_Details</relationshipName>
+        <type>ExternalLookup</type>
     </fields>
     <fields>
         <fullName>orderLine__c</fullName>

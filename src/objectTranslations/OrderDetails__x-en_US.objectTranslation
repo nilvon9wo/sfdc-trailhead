@@ -11,6 +11,7 @@
     <fields>
         <label><!-- orderID --></label>
         <name>orderID__c</name>
+        <relationshipLabel><!-- External Order Details --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- orderLine --></label>

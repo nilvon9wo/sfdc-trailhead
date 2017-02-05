@@ -24,5 +24,16 @@
         <label><!-- shippedDate --></label>
         <name>shippedDate__c</name>
     </fields>
+    <layouts>
+        <layout>Orders Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
 </CustomObjectTranslation>
