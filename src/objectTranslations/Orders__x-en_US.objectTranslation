@@ -20,6 +20,7 @@
     <fields>
         <label><!-- orderID --></label>
         <name>orderID__c</name>
+        <relationshipLabel><!-- External Orders --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- shippedDate --></label>
