@@ -71,6 +71,14 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>AsyncBillingServiceProxy</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>BillingServiceProxy</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Console</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -2216,6 +2224,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Self_Named_Object__c.Name_as_User_Look_Up__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SmsLog__c.MessageResult__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2272,6 +2285,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Threat_Tier__mdt.Vacation__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>User.Name_as_Formula__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <layoutAssignments>
@@ -2372,6 +2390,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Product2-Product Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Self_Named_Object__c-Self Named Object Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>SmsLog__c-SMS Log Layout</layout>
@@ -2566,6 +2587,10 @@
     <tabVisibilities>
         <tab>Quickstart</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Self_Named_Object__c</tab>
+        <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>SmsLog__c</tab>

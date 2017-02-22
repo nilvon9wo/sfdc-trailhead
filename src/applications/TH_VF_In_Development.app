@@ -12,6 +12,7 @@
     <tab>standard-Opportunity</tab>
     <tab>SmsLog__c</tab>
     <tab>Currency_Exchange</tab>
+    <tab>Self_Named_Object__c</tab>
     <uiType>Lightning</uiType>
     <utilityBar>TH_VF_In_Development_UtilityBar</utilityBar>
 </CustomApplication>

@@ -64,6 +64,16 @@
         <trackFeedHistory>true</trackFeedHistory>
         <type>Hierarchy</type>
     </fields>
+    <fields>
+        <fullName>Name_as_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>FirstName &amp; &apos; &apos; &amp; LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Name as Formula</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <listViews>
         <fullName>ActiveUsers</fullName>
         <filterScope>Everything</filterScope>

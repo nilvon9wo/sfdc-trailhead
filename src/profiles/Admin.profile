@@ -71,6 +71,14 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>AsyncBillingServiceProxy</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>BillingServiceProxy</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Console</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -2216,6 +2224,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Self_Named_Object__c.Name_as_User_Look_Up__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SmsLog__c.MessageResult__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2272,6 +2285,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Threat_Tier__mdt.Vacation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>User.Name_as_Formula__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
@@ -2372,6 +2390,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Product2-Product Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Self_Named_Object__c-Self Named Object Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>SmsLog__c-SMS Log Layout</layout>
@@ -2598,6 +2619,15 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
+        <object>Self_Named_Object__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>SmsLog__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
@@ -2772,6 +2802,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Quickstart</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Self_Named_Object__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
@@ -3314,6 +3348,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>SubmitMacrosAllowed</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>SubscribeToLightningReports</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

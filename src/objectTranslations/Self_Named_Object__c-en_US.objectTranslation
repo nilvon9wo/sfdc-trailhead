@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Self Named Object</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Self Named Objects</value>
+    </caseValues>
+    <fields>
+        <label><!-- Name as Text --></label>
+        <name>Name_as_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name as User Look Up --></label>
+        <name>Name_as_User_Look_Up__c</name>
+        <relationshipLabel><!-- Self Named Objects --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You must lookup yourself --></errorMessage>
+        <name>Name_as_User_lookup</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Name as Text must be the Creator&apos;s name --></errorMessage>
+        <name>Name_as_text_is_Current_User_Name</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Name must be your name --></errorMessage>
+        <name>Native_name_is_Current_User_Name</name>
+    </validationRules>
+</CustomObjectTranslation>
